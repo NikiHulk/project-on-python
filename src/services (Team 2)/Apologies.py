@@ -5,8 +5,8 @@ import Farewell
 
 class Apologies:
     def playApologies(self):
-        config = ["Извините! Буду исправляться", "Я в процессе обучения. Осталось недолго! Честно!",
-                  "Не обижайте меня, я же учусь!"]
+        config = ["Извините!", "Простите",
+                  "Пардон", "Виноват", '']
         print(random.choice(config))
         Farewell.Farewell.farewellAndQuit(self=0)
 
