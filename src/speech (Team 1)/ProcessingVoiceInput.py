@@ -1,8 +1,6 @@
 import speech_recognition
 import os
 
-from speech_recognition import Recognizer
-
 import CheckWeather
 import Greetings
 import Farewell
@@ -62,6 +60,7 @@ commands = {
     # ("translate", "interpretation", "translation", "перевод", "перевести", "переведи"): get_translation,
     # ("language", "язык"): change_language,
     ("какая погода сегодня", "какая сегодня погода", "погода", "прогноз"): checkWeather,
+    #("подбрось монету", "орёл или решка?", "кинь жребий"): toss_coin,
     # ("facebook", "person", "run", "пробей", "контакт"): run_person_through_social_nets_databases,
     # ("toss", "coin", "монета", "подбрось"): toss_coin,
 }
@@ -69,11 +68,44 @@ commands = {
 
 def executeCommandWithName(command_name: str, *args: list):
     for key in commands.keys():
-        if any(word in key for word in command_name):
+        if command_name in key:
             commands[key](*args)
-            return
         else:
             pass
+
+import random
+import pyttsx3
+
+def toss_coin():
+    """Симулирует подбрасывание монетки и возвращает результат."""
+    return random.choice([[["орел"], ["решка"]], [["tails"], ["heads"]]])
+
+def speak_result(result, language='ru'):
+    """Воспроизводит результат подбрасывания монетки."""
+    try:
+        engine = pyttsx3.init()
+        # if language == 'ru':
+        #     engine.say("Подбрось монету")
+        # else:
+        #     engine.say("Flip a coin")
+        if language == 'en':
+            engine.say(f"It's {result}!")
+        else:
+            engine.say(f"Выпало {result}!")
+        engine.runAndWait()
+    except pyttsx3.engine.EngineError as e:
+        print(f"Ошибка при воспроизведении речи: {e}")
+    except Exception as e:
+        print(f"Произошла неизвестная ошибка: {e}")
+
+
+if __name__ == "__main__":
+    result = toss_coin()
+    language = input("Выберите язык (ru/en): ").lower()
+    if language not in ['ru', 'en']:
+        print("Неверный язык. Используется русский по умолчанию.")
+        language = 'ru'
+    speak_result(result, language)
 
 if __name__ == "__main__":
 
@@ -86,7 +118,7 @@ if __name__ == "__main__":
 
         print(voiceInput)
 
-        voiceInput = voiceInput.split()
+        voiceInput = voiceInput.split(" ")
         command = voiceInput[0]
         commandOptions = [str(inputPart) for inputPart in voiceInput[1:len(voiceInput)]]
         executeCommandWithName(command, commandOptions)
