@@ -2,7 +2,7 @@ import os
 from platform import system
 
 
-class RebootManager:
+class ShutdownManager:
     " --- ( код зависящий от части speech {передача в переменную restart кодового слова да/нет} )"
 
     # TODO -> модуль speech
