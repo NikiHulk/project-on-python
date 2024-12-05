@@ -1,6 +1,8 @@
 import speech_recognition
 import os
 
+from speech_recognition import Recognizer
+
 import CheckWeather
 import Greetings
 import Farewell
@@ -52,7 +54,7 @@ def recordAndRecognizeAudio(*args: tuple):
 
 commands = {
     ("здравствуйте", "здравствуй", "здарова", "привет"): greetings,
-    ("ты меня утомила", "я устал от тебя", "ты тупая", "тебе надо развиваться"): apologies,
+    #("ты меня утомила", "я устал от тебя", "ты тупая", "тебе надо развиваться"): apologies,
     ("до свидания", "goodbye", "я ухожу", "прощай", "пока"): farewellAndQuit,
     # ("search", "google", "find", "найди"): search_for_term_on_google,
     # ("video", "youtube", "watch", "видео"): search_for_video_on_youtube,
@@ -67,11 +69,11 @@ commands = {
 
 def executeCommandWithName(command_name: str, *args: list):
     for key in commands.keys():
-        if command_name in key:
+        if any(word in key for word in command_name):
             commands[key](*args)
+            return
         else:
             pass
-
 
 if __name__ == "__main__":
 
@@ -84,7 +86,7 @@ if __name__ == "__main__":
 
         print(voiceInput)
 
-        voiceInput = voiceInput.split(" ")
+        voiceInput = voiceInput.split()
         command = voiceInput[0]
         commandOptions = [str(inputPart) for inputPart in voiceInput[1:len(voiceInput)]]
         executeCommandWithName(command, commandOptions)
