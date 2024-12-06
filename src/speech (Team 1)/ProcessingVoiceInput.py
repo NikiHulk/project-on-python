@@ -1,122 +1,93 @@
-import speech_recognition
+import speech_recognition as sr
 import os
-
-import random
-import pyttsx3
-from pycparser.ply.yacc import restart
-
-import CheckWeather
-import Exchange
-import Greetings
-import Farewell
-import Apologies
-from RebootManager import RebootManager
-from ShutdownManager import ShutdownManager
-from TossCoin import TossCoin
+import NoteManagerClass
+import Greetings  # Импортируем модуль с классом Greetings
+import Farewell   # Импортируем модуль с классом Farewell
+import CheckWeather # Импортируем модуль с классом CheckWeather (или функцией)
+import Apologies  # Импортируем модуль с классом Apologies (или функцией)
 
 
-# def apologies(*args: tuple):
-#    if not args[0]: return Apologies.Apologies.playApologies(self=0)
-
-def reboot(*args: tuple):
-    if not args[0]: return RebootManager.rebootManager(restart=True)
-
-
-def shutdown(*args: tuple):
-    if not args[0]: return ShutdownManager.shutdownManager(restart=True)
-
-
-def exchangeRate(*args: tuple):
-    if not args[0]: return Exchange.exchangeRate(currencyUnit="евро")
-
-
-def tossCoinResult(*args: tuple):
-    if not args[0]: return TossCoin.tossCoin(self=0)
-
-
-
-def farewellAndQuit(*args: tuple):
-    if not args[0]: return Farewell.Farewell.farewellAndQuit(self=0)
-
-
-def greetings(*args: tuple):
-    if not args[0]: return Greetings.Greetings.playGreetings(self=0)
-
-
-def checkWeather(*args: tuple):
-    if not args[0]: return CheckWeather.checkWeatherNow("Москва")
-
-
-def recordAndRecognizeAudio(*args: tuple):
-    with microphone:
-
-        recognizedData = ""
-
-        recognizer.adjust_for_ambient_noise(microphone, duration=2)
-
+def recordAndRecognizeAudio():
+    recognizer = sr.Recognizer()
+    with sr.Microphone() as source:
+        recognizer.adjust_for_ambient_noise(source, duration=2)
         try:
             print("Слушаю...")
-            audio = recognizer.listen(microphone, 5, 5)
-
+            audio = recognizer.listen(source, timeout=5, phrase_time_limit=5)
             with open("microphone-results.wav", "wb") as file:
                 file.write(audio.get_wav_data())
-
-        except speech_recognition.WaitTimeoutError:
-            print("Вас не слышно! Пожалуйста, проверьте свой микрофон.")
-            return
-        try:
             print("Распознаю...")
-            recognizedData = recognizer.recognize_google(audio, language="ru").lower()
-
-        except speech_recognition.UnknownValueError:
-            pass
-
-        return recognizedData
+            recognized_data = recognizer.recognize_google(audio, language="ru").lower()
+            return recognized_data
+        except sr.WaitTimeoutError:
+            print("Вас не слышно! Пожалуйста, проверьте свой микрофон.")
+            return None
+        except sr.UnknownValueError:
+            print("Не удалось распознать речь.")
+            return None
+        except Exception as e:
+            print(f"Ошибка при распознавании: {e}")
+            return None
 
 
 commands = {
-    ("здравствуйте", "здравствуй", "здарова", "привет"): greetings,
-    ("монетка"): tossCoinResult,
-    ("курс"): exchangeRate,
-    ("перезапуск"): reboot,
-    ("выключи"): shutdown,
-    # ("ты меня утомила", "я устал от тебя", "ты тупая", "тебе надо развиваться"): apologies,
-    ("до свидания", "goodbye", "я ухожу", "прощай", "пока"): farewellAndQuit,
-    # ("search", "google", "find", "найди"): search_for_term_on_google,
-    # ("video", "youtube", "watch", "видео"): search_for_video_on_youtube,
-    # ("wikipedia", "definition", "about", "определение", "википедия"): search_for_definition_on_wikipedia,
-    # ("translate", "interpretation", "translation", "перевод", "перевести", "переведи"): get_translation,
-    # ("language", "язык"): change_language,
-    ("какая погода сегодня", "какая сегодня погода", "погода", "прогноз"): checkWeather,
-    # ("подбрось монету", "орёл или решка?", "кинь жребий"): toss_coin,
-    # ("facebook", "person", "run", "пробей", "контакт"): run_person_through_social_nets_databases,
-    # ("toss", "coin", "монета", "подбрось"): toss_coin,
+    ("здравствуйте", "здравствуй", "здарова", "привет"): lambda: Greetings.Greetings().playGreetings(),  # Обратите внимание на лямбда-функцию
+    ("до свидания", "goodbye", "я ухожу", "прощай", "пока"): lambda: Farewell.Farewell().farewellAndQuit(), # лямбда-функция
+    ("какая погода сегодня", "какая сегодня погода", "погода", "прогноз"): lambda: CheckWeather.checkWeatherNow("Moscow"), # лямбда-функция
+    ("создать заметку", "записать", "новая заметка"): lambda: create_note_interaction(),
+    ("прочитать заметки", "заметки"): lambda: NoteManagerClass.NotesManager().ReadNotes(),
+    ("удалить заметку", "удалить запись"): lambda: delete_note_interaction(),
+    # ... добавьте другие команды ...
 }
+def create_note_interaction():
+    """Взаимодействие с пользователем для создания заметки."""
+    try:
+        note_text = input("Введите текст заметки: ")
+        NoteManagerClass.NotesManager().CreateNote(note_text)
+        print("Заметка создана.")
+    except Exception as e:
+        print(f"Произошла ошибка: {e}")
+def delete_note_interaction():
+    """Взаимодействие с пользователем для удаления заметки."""
+    try:
+        NoteManagerClass.NotesManager().ReadNotes()  # Сначала показать список заметок
+        if not NoteManagerClass.NotesManager().notes: # проверка на наличие заметок
+            print("Заметок нет для удаления")
+            return
+
+        while True:
+            try:
+                note_index = int(input("Введите номер заметки для удаления (или 0 для отмены): "))
+                if note_index == 0:
+                    return  # Отмена удаления
+                NoteManagerClass.NotesManager().DeleteNote(note_index)
+                print("Заметка удалена.")
+                break  # Выход из цикла после успешного удаления
+            except ValueError:
+                print("Неверный формат ввода. Пожалуйста, введите число.")
+            except IndexError:
+                print("Заметки с таким номером не существует.")
+
+    except Exception as e:
+        print(f"Произошла ошибка: {e}")
 
 
-def executeCommandWithName(command_name: str, *args: list):
-    for key in commands.keys():
-        if command_name in key:
-            commands[key](*args)
-        else:
-            pass
+def executeCommand(command_phrase: str):
+    for key, func in commands.items():
+        for keyword in key:
+            if keyword in command_phrase:
+                try:
+                    func()
+                except Exception as e:
+                    print(f"Ошибка при выполнении команды: {e}")
+                return
+    print("Неизвестная команда.")
 
 
 if __name__ == "__main__":
-
-    recognizer = speech_recognition.Recognizer()
-    microphone = speech_recognition.Microphone()
-
     while True:
-        voiceInput = recordAndRecognizeAudio()
-        os.remove("microphone-results.wav")
-
-        print(voiceInput)
-
-        voiceInput = voiceInput.split(" ")
-        command = voiceInput[0]
-        commandOptions = [str(inputPart) for inputPart in voiceInput[1:len(voiceInput)]]
-        executeCommandWithName(command, commandOptions)
-
-# TODO -> доделать остальные сервисы!
-# TODO -> не считывает больше 1 слова. Надо решить
+        voice_input = recordAndRecognizeAudio()
+        if voice_input:
+            os.remove("microphone-results.wav")
+            print(f"Распознано: {voice_input}")
+            executeCommand(voice_input)
