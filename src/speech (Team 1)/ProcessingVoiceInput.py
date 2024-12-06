@@ -12,6 +12,7 @@ import Farewell
 import Apologies
 from RebootManager import RebootManager
 from ShutdownManager import ShutdownManager
+from TossCoin import TossCoin
 
 
 # def apologies(*args: tuple):
@@ -30,9 +31,8 @@ def exchangeRate(*args: tuple):
 
 
 def tossCoinResult(*args: tuple):
-    if not args[0]:
-        result = str(random.choice(["орел", "решка"]))
-        print(result)
+    if not args[0]: return TossCoin.tossCoin(self=0)
+
 
 
 def farewellAndQuit(*args: tuple):

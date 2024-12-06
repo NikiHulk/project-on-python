@@ -26,8 +26,7 @@ def checkWeatherNow(city):
 
 
 if __name__ == "__main__":
-    city = "Москва"
-    checkWeatherNow(city=city)
+    checkWeatherNow()
 
 # Написан фрагмент кода только для погоды в настоящее время
 # TODO -> сделать оставшийся фрагмент кода с прогнозом на неделю~
