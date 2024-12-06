@@ -1,14 +1,38 @@
 import speech_recognition
 import os
 
+import random
+import pyttsx3
+from pycparser.ply.yacc import restart
+
 import CheckWeather
+import Exchange
 import Greetings
 import Farewell
 import Apologies
+from RebootManager import RebootManager
+from ShutdownManager import ShutdownManager
 
 
-#def apologies(*args: tuple):
+# def apologies(*args: tuple):
 #    if not args[0]: return Apologies.Apologies.playApologies(self=0)
+
+def reboot(*args: tuple):
+    if not args[0]: return RebootManager.rebootManager(restart=True)
+
+
+def shutdown(*args: tuple):
+    if not args[0]: return ShutdownManager.shutdownManager(restart=True)
+
+
+def exchangeRate(*args: tuple):
+    if not args[0]: return Exchange.exchangeRate(currencyUnit="евро")
+
+
+def tossCoinResult(*args: tuple):
+    if not args[0]:
+        result = str(random.choice(["орел", "решка"]))
+        print(result)
 
 
 def farewellAndQuit(*args: tuple):
@@ -20,7 +44,7 @@ def greetings(*args: tuple):
 
 
 def checkWeather(*args: tuple):
-    if not args[0]: return CheckWeather.checkWeatherNow("Moscow")
+    if not args[0]: return CheckWeather.checkWeatherNow("Москва")
 
 
 def recordAndRecognizeAudio(*args: tuple):
@@ -52,7 +76,11 @@ def recordAndRecognizeAudio(*args: tuple):
 
 commands = {
     ("здравствуйте", "здравствуй", "здарова", "привет"): greetings,
-    #("ты меня утомила", "я устал от тебя", "ты тупая", "тебе надо развиваться"): apologies,
+    ("монетка"): tossCoinResult,
+    ("курс"): exchangeRate,
+    ("перезапуск"): reboot,
+    ("выключи"): shutdown,
+    # ("ты меня утомила", "я устал от тебя", "ты тупая", "тебе надо развиваться"): apologies,
     ("до свидания", "goodbye", "я ухожу", "прощай", "пока"): farewellAndQuit,
     # ("search", "google", "find", "найди"): search_for_term_on_google,
     # ("video", "youtube", "watch", "видео"): search_for_video_on_youtube,
@@ -60,7 +88,7 @@ commands = {
     # ("translate", "interpretation", "translation", "перевод", "перевести", "переведи"): get_translation,
     # ("language", "язык"): change_language,
     ("какая погода сегодня", "какая сегодня погода", "погода", "прогноз"): checkWeather,
-    #("подбрось монету", "орёл или решка?", "кинь жребий"): toss_coin,
+    # ("подбрось монету", "орёл или решка?", "кинь жребий"): toss_coin,
     # ("facebook", "person", "run", "пробей", "контакт"): run_person_through_social_nets_databases,
     # ("toss", "coin", "монета", "подбрось"): toss_coin,
 }
@@ -73,39 +101,6 @@ def executeCommandWithName(command_name: str, *args: list):
         else:
             pass
 
-import random
-import pyttsx3
-
-def toss_coin():
-    """Симулирует подбрасывание монетки и возвращает результат."""
-    return random.choice([[["орел"], ["решка"]], [["tails"], ["heads"]]])
-
-def speak_result(result, language='ru'):
-    """Воспроизводит результат подбрасывания монетки."""
-    try:
-        engine = pyttsx3.init()
-        # if language == 'ru':
-        #     engine.say("Подбрось монету")
-        # else:
-        #     engine.say("Flip a coin")
-        if language == 'en':
-            engine.say(f"It's {result}!")
-        else:
-            engine.say(f"Выпало {result}!")
-        engine.runAndWait()
-    except pyttsx3.engine.EngineError as e:
-        print(f"Ошибка при воспроизведении речи: {e}")
-    except Exception as e:
-        print(f"Произошла неизвестная ошибка: {e}")
-
-
-if __name__ == "__main__":
-    result = toss_coin()
-    language = input("Выберите язык (ru/en): ").lower()
-    if language not in ['ru', 'en']:
-        print("Неверный язык. Используется русский по умолчанию.")
-        language = 'ru'
-    speak_result(result, language)
 
 if __name__ == "__main__":
 
