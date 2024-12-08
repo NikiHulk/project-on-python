@@ -48,7 +48,7 @@ commands = {
     ("создать заметку", "записать", "новая заметка"): lambda: create_note_interaction(),
     ("прочитать заметки", "заметки", "посмотреть заметки"): lambda: NoteManagerClass.NotesManager().ReadNotes(),
     ("удалить заметку", "удалить запись"): lambda: delete_note_interaction(),
-    ("курс","какой курс"): lambda: Exchange.exchangeRate(currencyUnit=str(input('Введите валюту: '))),
+    ("курс","какой курс", "курс валют"): lambda: Exchange.exchangeRate(currencyUnit=str(input('Введите валюту: '))),
     ("подбрось монетку", "кинь монету", "сыграем в лотерею?"): lambda: TossCoin.tossCoin(self=0),
     ("переводчик", "перевод"): lambda: Translating.translate(),
     # ... добавьте другие команды ...

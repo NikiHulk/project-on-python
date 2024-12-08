@@ -1,12 +1,6 @@
 import time
-import pyttsx3
+from SpeechUtils import speak
 
-from SpeechUtils import engine
-
-engine = pyttsx3.init()
-def speak(text, language = "ru"):
-    engine.say(text)
-    engine.runAndWait()
 class VoiceAssistant:
     def typeAnimation(text, speed=0.02):
         for char in text:
@@ -22,3 +16,4 @@ class VoiceAssistant:
         print(toString)
         speak(toString)
     typeAnimation(voiceAssistantInforamtion())
+# TODO -> озвучивает только toString, дальше ничего не говорит
