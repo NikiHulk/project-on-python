@@ -8,7 +8,7 @@ import Apologies  # Импортируем модуль с классом Apolog
 import TossCoin
 import pyttsx3
 
-engine = pyttsx3
+engine = pyttsx3.init()
 def speak(text):
     """Функция для озвучивания текста."""
     engine.say(text)
@@ -23,16 +23,20 @@ def recordAndRecognizeAudio():
             with open("microphone-results.wav", "wb") as file:
                 file.write(audio.get_wav_data())
             print("Распознаю...")
+            speak("Распознаю...")
             recognized_data = recognizer.recognize_google(audio, language="ru").lower()
             return recognized_data
         except sr.WaitTimeoutError:
             print("Вас не слышно! Пожалуйста, проверьте свой микрофон.")
+            speak("Вас не слышно! Пожалуйста, проверьте свой микрофон.")
             return None
         except sr.UnknownValueError:
             print("Не удалось распознать речь.")
+            speak("Не удалось распознать речь.")
             return None
         except Exception as e:
             print(f"Ошибка при распознавании: {e}")
+            speak(f"Ошибка при распознавании: {e}")
             return None
 
 
@@ -94,10 +98,8 @@ def executeCommand(command_phrase: str):
             if keyword in command_phrase:
                 try:
                     response = func()
-                    if isinstance(response, str): #Проверяем, что ответ - строка
-                        speak(response)
-                    elif response is not None:
-                        speak(str(response))# пытаемся преобразовать в строку если не строка
+                    if response:
+                        speak(str(response))
                     else:
                         speak("Команда выполнена")
                 except Exception as e:
@@ -108,6 +110,7 @@ def executeCommand(command_phrase: str):
     speak("Неизвестная команда.")
 
 if __name__ == "__main__":
+    speak("Здравствуйте! Чем я могу вам помочь?")
     while True:
         voice_input = recordAndRecognizeAudio()
         if voice_input:
