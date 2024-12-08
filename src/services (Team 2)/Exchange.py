@@ -10,8 +10,14 @@ def exchangeRate(currencyUnit):
 
     getHtmlPage = BeautifulSoup(response.text, "lxml")
     span = getHtmlPage.find('span', class_="DFlfde SwHCTb")
-    value = span.text.strip()
-    print(f"Один Российский рубль равен {value}" + " " + currencyUnit)
+
+    if span:
+        value = span.text.strip()
+        print(f"Один Российский рубль равен {value} {currencyUnit}")
+    else:
+        print(f"Не удалось получить курс для валюты {currencyUnit}. Возможно, ошибка в запросе или валюта не поддерживается.")
 
 if __name__ == "__main__":
-    exchange = exchangeRate()
+    currency = input("Введите валюту для получения курса (например, USD, EUR): ")
+    exchangeRate(currency)
+

@@ -10,6 +10,7 @@ class ShutdownManager:
         else:
             exit()
 
+
 if __name__ == "__main__":
     reboot = ShutdownManager()
     reboot.shutdownManager()

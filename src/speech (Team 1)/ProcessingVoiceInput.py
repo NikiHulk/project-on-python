@@ -1,10 +1,15 @@
 import speech_recognition as sr
 import os
+
+import Exchange
 import NoteManagerClass
 import Greetings  # Импортируем модуль с классом Greetings
 import Farewell   # Импортируем модуль с классом Farewell
 import CheckWeather # Импортируем модуль с классом CheckWeather (или функцией)
 import Apologies  # Импортируем модуль с классом Apologies (или функцией)
+import Translating
+import VoiceAssistantClass
+from TossCoin import TossCoin
 
 
 def recordAndRecognizeAudio():
@@ -13,7 +18,7 @@ def recordAndRecognizeAudio():
         recognizer.adjust_for_ambient_noise(source, duration=2)
         try:
             print("Слушаю...")
-            audio = recognizer.listen(source, timeout=5, phrase_time_limit=5)
+            audio = recognizer.listen(source, timeout=8, phrase_time_limit=8)
             with open("microphone-results.wav", "wb") as file:
                 file.write(audio.get_wav_data())
             print("Распознаю...")
@@ -33,12 +38,17 @@ def recordAndRecognizeAudio():
 commands = {
     ("здравствуйте", "здравствуй", "здарова", "привет"): lambda: Greetings.Greetings().playGreetings(),  # Обратите внимание на лямбда-функцию
     ("до свидания", "goodbye", "я ухожу", "прощай", "пока"): lambda: Farewell.Farewell().farewellAndQuit(), # лямбда-функция
-    ("какая погода сегодня", "какая сегодня погода", "погода", "прогноз"): lambda: CheckWeather.checkWeatherNow("Moscow"), # лямбда-функция
+    ("какая погода сегодня", "какая сегодня погода", "погода"): lambda: CheckWeather.checkWeatherNow("Moscow"), # лямбда-функция
     ("создать заметку", "записать", "новая заметка"): lambda: create_note_interaction(),
     ("прочитать заметки", "заметки"): lambda: NoteManagerClass.NotesManager().ReadNotes(),
     ("удалить заметку", "удалить запись"): lambda: delete_note_interaction(),
+    ("курс","какой курс"): lambda: Exchange.exchangeRate(currencyUnit=str(input('Введите валюту: '))),
+    ("подбрось монетку"): lambda: TossCoin.tossCoin(self=0),
+    ("переводчик"): lambda: Translating.translate(),
     # ... добавьте другие команды ...
 }
+
+
 def create_note_interaction():
     """Взаимодействие с пользователем для создания заметки."""
     try:
@@ -85,6 +95,7 @@ def executeCommand(command_phrase: str):
 
 
 if __name__ == "__main__":
+    VoiceAssistantClass.VoiceAssistant.voiceAssistantInforamtion()
     while True:
         voice_input = recordAndRecognizeAudio()
         if voice_input:
