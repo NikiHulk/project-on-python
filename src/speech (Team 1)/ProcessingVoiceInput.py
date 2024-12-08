@@ -5,8 +5,14 @@ import Greetings  # Импортируем модуль с классом Greeti
 import Farewell   # Импортируем модуль с классом Farewell
 import CheckWeather # Импортируем модуль с классом CheckWeather (или функцией)
 import Apologies  # Импортируем модуль с классом Apologies (или функцией)
+import TossCoin
+import pyttsx3
 
-
+engine = pyttsx3
+def speak(text):
+    """Функция для озвучивания текста."""
+    engine.say(text)
+    engine.runAndWait()
 def recordAndRecognizeAudio():
     recognizer = sr.Recognizer()
     with sr.Microphone() as source:
@@ -31,28 +37,34 @@ def recordAndRecognizeAudio():
 
 
 commands = {
-    ("здравствуйте", "здравствуй", "здарова", "привет"): lambda: Greetings.Greetings().playGreetings(),  # Обратите внимание на лямбда-функцию
-    ("до свидания", "goodbye", "я ухожу", "прощай", "пока"): lambda: Farewell.Farewell().farewellAndQuit(), # лямбда-функция
-    ("какая погода сегодня", "какая сегодня погода", "погода", "прогноз"): lambda: CheckWeather.checkWeatherNow("Moscow"), # лямбда-функция
-    ("создать заметку", "записать", "новая заметка"): lambda: create_note_interaction(),
-    ("прочитать заметки", "заметки"): lambda: NoteManagerClass.NotesManager().ReadNotes(),
-    ("удалить заметку", "удалить запись"): lambda: delete_note_interaction(),
+    ("здравствуйте", "здравствуй", "здарова", "привет", "Салам", "Приветствую", "Hi", "Hello"): lambda: Greetings.Greetings().playGreetings(),  # Обратите внимание на лямбда-функцию
+    ("до свидания", "goodbye", "я ухожу", "прощай", "пока", "bye-bye", "До встречи"): lambda: Farewell.Farewell().farewellAndQuit(), # лямбда-функция
+    ("какая погода сегодня", "какая сегодня погода", "погода", "прогноз", "прогноз погоды", "что там по погоде"): lambda: CheckWeather.checkWeatherNow("Moscow"), # лямбда-функция
+    ("создать заметку", "записать", "новая заметка", "напиши заметку"): lambda: create_note_interaction(),
+    ("прочитать заметки", "заметки", "чтение заметок"): lambda: NoteManagerClass.NotesManager().ReadNotes(),
+    ("удалить заметку", "удалить запись", "сотри заметку"): lambda: delete_note_interaction(),
+    ("кинь монету", "кинь жребий", "подбрось монету"): lambda: TossCoin.TossCoin.tossCoin()
     # ... добавьте другие команды ...
 }
 def create_note_interaction():
-    """Взаимодействие с пользователем для создания заметки."""
+    """Взаимодействие с пользователем для создания заметки.
+    с помошью голоса """
     try:
         note_text = input("Введите текст заметки: ")
         NoteManagerClass.NotesManager().CreateNote(note_text)
         print("Заметка создана.")
+        speak("Заметка создана")
     except Exception as e:
         print(f"Произошла ошибка: {e}")
+        speak(f"Произошла ошибка: {e}")
 def delete_note_interaction():
-    """Взаимодействие с пользователем для удаления заметки."""
+    """Взаимодействие с пользователем для удаления заметки.
+    с помощью голоса"""
     try:
         NoteManagerClass.NotesManager().ReadNotes()  # Сначала показать список заметок
         if not NoteManagerClass.NotesManager().notes: # проверка на наличие заметок
             print("Заметок нет для удаления")
+            speak("Заметок нет для удаления")
             return
 
         while True:
@@ -62,14 +74,18 @@ def delete_note_interaction():
                     return  # Отмена удаления
                 NoteManagerClass.NotesManager().DeleteNote(note_index)
                 print("Заметка удалена.")
+                speak("Заметка удалена")
                 break  # Выход из цикла после успешного удаления
             except ValueError:
                 print("Неверный формат ввода. Пожалуйста, введите число.")
+                speak("Неверный формат ввода. Пожалуйста, введите число")
             except IndexError:
                 print("Заметки с таким номером не существует.")
+                speak("Заметки с таким номером не существует")
 
     except Exception as e:
         print(f"Произошла ошибка: {e}")
+        speak(f"Произошла ошибка: {e}")
 
 
 def executeCommand(command_phrase: str):
@@ -77,12 +93,19 @@ def executeCommand(command_phrase: str):
         for keyword in key:
             if keyword in command_phrase:
                 try:
-                    func()
+                    response = func()
+                    if isinstance(response, str): #Проверяем, что ответ - строка
+                        speak(response)
+                    elif response is not None:
+                        speak(str(response))# пытаемся преобразовать в строку если не строка
+                    else:
+                        speak("Команда выполнена")
                 except Exception as e:
                     print(f"Ошибка при выполнении команды: {e}")
+                    speak(f"Ошибка при выполнении команды: {e}")
                 return
     print("Неизвестная команда.")
-
+    speak("Неизвестная команда.")
 
 if __name__ == "__main__":
     while True:
