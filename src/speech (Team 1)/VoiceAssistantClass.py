@@ -1,6 +1,13 @@
 import time
-class VoiceAssistant:
+import pyttsx3
 
+from SpeechUtils import engine
+
+engine = pyttsx3.init()
+def speak(text, language = "ru"):
+    engine.say(text)
+    engine.runAndWait()
+class VoiceAssistant:
     def typeAnimation(text, speed=0.02):
         for char in text:
             print(char, end='', flush=True)  # Печатаем символ, не добавляя новой строки
@@ -12,5 +19,6 @@ class VoiceAssistant:
                     f"Постараюсь помочь Вам со всем о чем попросите! \n"
                     f"Языки на которых я умею разговаривать: {LanguageOfSpeaking[0]} и {LanguageOfSpeaking[1]} \n"
                     f"Языки на которых я могу понять Вас: {LanguageOfRecognition[0]} и {LanguageOfRecognition[1]}")
-        return toString
+        print(toString)
+        speak(toString)
     typeAnimation(voiceAssistantInforamtion())

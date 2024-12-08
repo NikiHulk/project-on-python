@@ -4,7 +4,7 @@ from SpeechUtils import speak
 
 
 class TossCoin:
-    def tossCoin(self, num_tosses=1):
+    def tossCoin(num_tosses=1):
         """Подбрасывает монету заданное количество раз (по умолчанию 1 раз)."""
         for _ in range(num_tosses):
             result = random.choice(["орел", "решка"])

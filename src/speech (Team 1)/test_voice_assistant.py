@@ -88,6 +88,6 @@ class TestVoiceAssistant(unittest.TestCase):
             executeCommand('Неизвестная команда')
             mock_print.assert_called_once_with("Неизвестная команда.")
 
-# TODO -> докрутить тесты до конца
+# TODO -> докрутить тесты до конца В каком классе написания
 # if __name__ == '__main__':
 #     unittest.main()

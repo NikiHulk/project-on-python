@@ -42,15 +42,15 @@ def recordAndRecognizeAudio():
 
 
 commands = {
-    ("здравствуйте", "здравствуй", "здарова", "привет"): lambda: Greetings.Greetings().playGreetings(),  # Обратите внимание на лямбда-функцию
-    ("до свидания", "goodbye", "я ухожу", "прощай", "пока"): lambda: Farewell.Farewell().farewellAndQuit(), # лямбда-функция
-    ("какая погода сегодня", "какая сегодня погода", "погода"): lambda: CheckWeather.checkWeatherNow("Moscow"), # лямбда-функция
+    ("здравствуйте", "здравствуй", "здарова", "привет", ): lambda: Greetings.Greetings().playGreetings(),  # Обратите внимание на лямбда-функцию
+    ("до свидания", "goodbye", "я ухожу", "прощай", "пока", ): lambda: Farewell.Farewell().farewellAndQuit(), # лямбда-функция
+    ("какая погода сегодня", "какая сегодня погода", "погода", "какая погода в городе"): lambda: CheckWeather.checkWeatherNow("Moscow"), # лямбда-функция
     ("создать заметку", "записать", "новая заметка"): lambda: create_note_interaction(),
-    ("прочитать заметки", "заметки"): lambda: NoteManagerClass.NotesManager().ReadNotes(),
+    ("прочитать заметки", "заметки", "посмотреть заметки"): lambda: NoteManagerClass.NotesManager().ReadNotes(),
     ("удалить заметку", "удалить запись"): lambda: delete_note_interaction(),
     ("курс","какой курс"): lambda: Exchange.exchangeRate(currencyUnit=str(input('Введите валюту: '))),
-    ("подбрось монетку"): lambda: TossCoin.tossCoin(self=0),
-    ("переводчик"): lambda: Translating.translate(),
+    ("подбрось монетку", "кинь монету", "сыграем в лотерею?"): lambda: TossCoin.tossCoin(self=0),
+    ("переводчик", "перевод"): lambda: Translating.translate(),
     # ... добавьте другие команды ...
 }
 
