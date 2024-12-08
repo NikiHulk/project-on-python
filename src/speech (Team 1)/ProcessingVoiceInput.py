@@ -6,19 +6,15 @@ import Farewell   # Импортируем модуль с классом Farewe
 import CheckWeather # Импортируем модуль с классом CheckWeather (или функцией)
 import Apologies  # Импортируем модуль с классом Apologies (или функцией)
 import TossCoin
-import pyttsx3
+from SpeechUtils import speak
 
-engine = pyttsx3.init()
-def speak(text):
-    """Функция для озвучивания текста."""
-    engine.say(text)
-    engine.runAndWait()
 def recordAndRecognizeAudio():
     recognizer = sr.Recognizer()
     with sr.Microphone() as source:
         recognizer.adjust_for_ambient_noise(source, duration=2)
         try:
             print("Слушаю...")
+            speak("Слушаю...")
             audio = recognizer.listen(source, timeout=5, phrase_time_limit=5)
             with open("microphone-results.wav", "wb") as file:
                 file.write(audio.get_wav_data())
@@ -41,8 +37,8 @@ def recordAndRecognizeAudio():
 
 
 commands = {
-    ("здравствуйте", "здравствуй", "здарова", "привет", "Салам", "Приветствую", "Hi", "Hello"): lambda: Greetings.Greetings().playGreetings(),  # Обратите внимание на лямбда-функцию
-    ("до свидания", "goodbye", "я ухожу", "прощай", "пока", "bye-bye", "До встречи"): lambda: Farewell.Farewell().farewellAndQuit(), # лямбда-функция
+    ("здравствуйте", "здравствуй", "здарова", "привет", "салам", "приветствую", "hi", "hello"): lambda: Greetings.Greetings().playGreetings(),  # Обратите внимание на лямбда-функцию
+    ("до свидания", "goodbye", "я ухожу", "прощай", "пока", "bye-bye", "до встречи"): lambda: Farewell.Farewell().farewellAndQuit(), # лямбда-функция
     ("какая погода сегодня", "какая сегодня погода", "погода", "прогноз", "прогноз погоды", "что там по погоде"): lambda: CheckWeather.checkWeatherNow("Moscow"), # лямбда-функция
     ("создать заметку", "записать", "новая заметка", "напиши заметку"): lambda: create_note_interaction(),
     ("прочитать заметки", "заметки", "чтение заметок"): lambda: NoteManagerClass.NotesManager().ReadNotes(),
@@ -54,6 +50,7 @@ def create_note_interaction():
     """Взаимодействие с пользователем для создания заметки.
     с помошью голоса """
     try:
+        speak("Введите текст заметки")
         note_text = input("Введите текст заметки: ")
         NoteManagerClass.NotesManager().CreateNote(note_text)
         print("Заметка создана.")
@@ -73,6 +70,7 @@ def delete_note_interaction():
 
         while True:
             try:
+                speak("Введите номер заметки для удаления (или 0 для отмены)")
                 note_index = int(input("Введите номер заметки для удаления (или 0 для отмены): "))
                 if note_index == 0:
                     return  # Отмена удаления
@@ -117,3 +115,4 @@ if __name__ == "__main__":
             os.remove("microphone-results.wav")
             print(f"Распознано: {voice_input}")
             executeCommand(voice_input)
+#TODO - приветствия и прощания нужно реализовать с помощью голоса
