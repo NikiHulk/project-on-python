@@ -33,5 +33,3 @@ class NotesManager:
             self.SaveNotes()
         else:
             print("Неверный номер заметки.")
-
-

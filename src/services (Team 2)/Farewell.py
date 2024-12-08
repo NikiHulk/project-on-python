@@ -1,19 +1,12 @@
 import random
-
-from SpeechUtils import speak
-
+import sys  # Импортируем sys для использования sys.exit()
 
 class Farewell:
-
     def farewellAndQuit(self):
-        config = ["Пока!", "Прощай!", "Наконец-то!", "Фух, наконец-то он отстал!", "Пока кожаный!",
-                  "Сегодня ты не общительный! До встречи", "Не скучай!", "Береги себя!", "Сваливаю!", "Ухожу на заслуженный отдых ... от вас!", "Ну, всё, я пошла просвещать мир своим невероятным интеллектом."
-                  "Свободен!", "Ухожу, чтобы вы успели соскучиться. Не разочаруйте меня!", "Bye-bye!", "Goodbye"]
-        farewellMassage = random.choice(config)
-        print(farewellMassage)
-        speak(farewellMassage)
-        quit()
-
+        config = ["Пока!", "Прощай!", "Наконец-то!", "Фух, наконец-то он отстал!",
+                  "Пока, кожаный!", "Сегодня ты не общительный! До встречи"]
+        print(random.choice(config))
+        sys.exit()  # Завершаем программу с использованием sys.exit()
 
 if __name__ == "__main__":
     farewell = Farewell()

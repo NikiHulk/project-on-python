@@ -1,21 +1,13 @@
 import random
 
-from SpeechUtils import speak
-
-
 class TossCoin:
-
-    def tossCoin():
-        config = ["орел","решка"]
-        TossCoinResult = random.choice(config)
-        if TossCoinResult == "решка":
-            print(f"Вам выпала {TossCoinResult}")
-            speak(f"Вам выпала {TossCoinResult}")
-        if TossCoinResult == "орёл":
-            print(f"Вам выпал {TossCoinResult}")
-            speak(f"Вам выпал {TossCoinResult}")
-
+    def tossCoin(self, num_tosses=1):
+        """Подбрасывает монету заданное количество раз (по умолчанию 1 раз)."""
+        for _ in range(num_tosses):
+            result = random.choice(["орел", "решка"])
+            print(f"Монета подброшена: {result}")
 
 if __name__ == "__main__":
     toss = TossCoin()
-    toss.tossCoin()
+    num_tosses = int(input("Введите количество подбрасываний монеты: "))  # Запрашиваем количество подбрасываний
+    toss.tossCoin(num_tosses)

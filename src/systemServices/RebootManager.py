@@ -10,6 +10,7 @@ class RebootManager:
         else:
             exit()
 
+
 if __name__ == "__main__":
     reboot = RebootManager()
     reboot.rebootManager()
