@@ -9,6 +9,7 @@ import CheckWeather # Импортируем модуль с классом Chec
 import Apologies  # Импортируем модуль с классом Apologies (или функцией)
 import Translating
 import VoiceAssistantClass
+from SpeechUtils import speak
 from TossCoin import TossCoin
 
 
@@ -18,20 +19,25 @@ def recordAndRecognizeAudio():
         recognizer.adjust_for_ambient_noise(source, duration=2)
         try:
             print("Слушаю...")
+            speak("Слушаю...")
             audio = recognizer.listen(source, timeout=8, phrase_time_limit=8)
             with open("microphone-results.wav", "wb") as file:
                 file.write(audio.get_wav_data())
             print("Распознаю...")
+            speak("Распознаю...")
             recognized_data = recognizer.recognize_google(audio, language="ru").lower()
             return recognized_data
         except sr.WaitTimeoutError:
             print("Вас не слышно! Пожалуйста, проверьте свой микрофон.")
+            speak("Вас не слышно! Пожалуйста, проверьте свой микрофон.")
             return None
         except sr.UnknownValueError:
             print("Не удалось распознать речь.")
+            speak("Не удалось распознать речь.")
             return None
         except Exception as e:
             print(f"Ошибка при распознавании: {e}")
+            speak(f"Ошибка при распознавании: {e}")
             return None
 
 
@@ -52,34 +58,43 @@ commands = {
 def create_note_interaction():
     """Взаимодействие с пользователем для создания заметки."""
     try:
+        speak("Введите текст заметки")
         note_text = input("Введите текст заметки: ")
         NoteManagerClass.NotesManager().CreateNote(note_text)
         print("Заметка создана.")
+        speak("Заметка создана.")
     except Exception as e:
         print(f"Произошла ошибка: {e}")
+        speak(f"Произошла ошибка: {e}")
 def delete_note_interaction():
     """Взаимодействие с пользователем для удаления заметки."""
     try:
         NoteManagerClass.NotesManager().ReadNotes()  # Сначала показать список заметок
         if not NoteManagerClass.NotesManager().notes: # проверка на наличие заметок
-            print("Заметок нет для удаления")
+            print("Нет заметок для удаления")
+            speak("Нет заметок для удаления")
             return
 
         while True:
             try:
+                speak("Введите номер заметки для удаления (или 0 для отмены)")
                 note_index = int(input("Введите номер заметки для удаления (или 0 для отмены): "))
                 if note_index == 0:
                     return  # Отмена удаления
                 NoteManagerClass.NotesManager().DeleteNote(note_index)
                 print("Заметка удалена.")
+                speak("Заметка удалена.")
                 break  # Выход из цикла после успешного удаления
             except ValueError:
                 print("Неверный формат ввода. Пожалуйста, введите число.")
+                speak("Неверный формат ввода. Пожалуйста, введите число.")
             except IndexError:
                 print("Заметки с таким номером не существует.")
+                speak("Заметки с таким номером не существует.")
 
     except Exception as e:
         print(f"Произошла ошибка: {e}")
+        speak(f"Произошла ошибка: {e}")
 
 
 def executeCommand(command_phrase: str):
@@ -90,8 +105,10 @@ def executeCommand(command_phrase: str):
                     func()
                 except Exception as e:
                     print(f"Ошибка при выполнении команды: {e}")
+                    speak(f"Ошибка при выполнении команды: {e}")
                 return
     print("Неизвестная команда.")
+    speak("Неизвестная команда.")
 
 
 if __name__ == "__main__":

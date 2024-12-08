@@ -1,5 +1,8 @@
 import random
 
+from SpeechUtils import speak
+
+
 class Greetings:
     def playGreetings(self, name="друг"):
         """Приветствует пользователя с использованием его имени (по умолчанию 'друг')."""
@@ -10,9 +13,12 @@ class Greetings:
             f"Привет, кожаный {name}!",
             "На связи!"
         ]
-        print(random.choice(config))
+        greetingMassage = random.choice(config)
+        print(greetingMassage)
+        speak(greetingMassage)
 
 if __name__ == "__main__":
+    speak("Введите ваше имя")
     name = input("Введите ваше имя: ")  # Получаем имя пользователя
     greetings = Greetings()
     greetings.playGreetings(name)

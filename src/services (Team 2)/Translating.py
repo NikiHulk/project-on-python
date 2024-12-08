@@ -1,18 +1,23 @@
 import requests
 from bs4 import BeautifulSoup
 
+from SpeechUtils import speak
+
 
 def translate():
     """Функция для перевода текста с помощью парсинга Google Translate."""
 
     # Запрос исходного языка
+    speak("Введите код языка исходного текста (например, 'en' для английского, 'ru' для русского)")
     source_lang = input(
         "Введите код языка исходного текста (например, 'en' для английского, 'ru' для русского): ").strip()
 
     # Запрос целевого языка
+    speak("Введите код целевого языка (например, 'en' для английского, 'ru' для русского)")
     target_lang = input("Введите код целевого языка (например, 'en' для английского, 'ru' для русского): ").strip()
 
     # Запрос текста для перевода
+    speak("Введите текст перевода")
     text_to_translate = input("Введите текст для перевода: ").strip()
 
     # Формирование URL для мобильной версии Google Translate
@@ -33,13 +38,17 @@ def translate():
             translation = soup.find("div", class_="result-container")
             if translation:
                 print(f"\nПеревод: {translation.text}")
+                speak(f"Зачитываю перевод вашего текста, {translation.text}")
             else:
                 print("Перевод не найден")
+                speak("Перевод не найден")
         else:
             print("Ошибка при запросе. Код ответа:", response.status_code)
+            speak(f"Ошибка при запросе. Код ответа: {response.status_code}")
 
     except Exception as e:
         print(f"Ошибка при выполнении запроса: {e}")
+        speak(f"Ошибка при выполнении запроса: {e}")
 
 # Пример вызова функции:
 # translate()

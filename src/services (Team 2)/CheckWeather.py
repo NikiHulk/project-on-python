@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
+from SpeechUtils import speak
+
 
 def checkWeatherNow(city):
     headers = {
@@ -19,13 +21,25 @@ def checkWeatherNow(city):
     humidity = getHtmlPage.select("#wob_hm")[0].getText()
     time = getHtmlPage.select("#wob_dts")[0].getText()
     wind = getHtmlPage.select("#wob_ws")[0].getText()
-
+    temperatureForecast = f"{temperature}"
+    windForecast = f"{wind}"
+    if "м/с" in windForecast:
+        windForecast = windForecast.replace("м/с", "метров в секунду")
+    if "-" in temperatureForecast:
+        temperatureForecast = temperatureForecast.replace("-", "минус ")
+    if "+" in temperatureForecast:
+        temperatureForecast = temperatureForecast.replace("+", "плюс ")
     # Выводим текущую погоду
     print(f"В городе {city} сейчас {title.lower()}: \n"
           f"Температура составляет: {temperature}℃ \n"
           f"Влажность составляет: {humidity} \n"
           f"Настоящее время: {time[:1].upper() + time[1:]} \n"
           f"Ветер: {wind}")
+    speak(f"В городе {city} сейчас {title.lower()}: \n"
+          f"Температура составляет: {temperatureForecast}℃ \n"
+          f"Влажность составляет: {humidity} \n"
+          f"Настоящее время: {time[:1].upper() + time[1:]} \n"
+          f"Ветер: {windForecast}")
 
 if __name__ == "__main__":
     city = input("Введите город: ")  # Получаем город от пользователя
