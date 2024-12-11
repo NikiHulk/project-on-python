@@ -1,7 +1,6 @@
 import time
-from SpeechUtils import speak
-
 class VoiceAssistant:
+
     def typeAnimation(text, speed=0.02):
         for char in text:
             print(char, end='', flush=True)  # Печатаем символ, не добавляя новой строки
@@ -13,7 +12,5 @@ class VoiceAssistant:
                     f"Постараюсь помочь Вам со всем о чем попросите! \n"
                     f"Языки на которых я умею разговаривать: {LanguageOfSpeaking[0]} и {LanguageOfSpeaking[1]} \n"
                     f"Языки на которых я могу понять Вас: {LanguageOfRecognition[0]} и {LanguageOfRecognition[1]}")
-        print(toString)
-        speak(toString)
+        return toString
     typeAnimation(voiceAssistantInforamtion())
-# TODO -> озвучивает только toString, дальше ничего не говорит
