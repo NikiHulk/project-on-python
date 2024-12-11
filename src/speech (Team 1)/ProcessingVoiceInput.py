@@ -116,7 +116,7 @@ def executeCommand(command_phrase: str):
 
 
 if __name__ == "__main__":
-    assistant = VoiceAssistantClass.VoiceAssistant()  # Создаем экземпляр класса VoiceAssistant
+    assistant = VoiceAssistantClass.VoiceAssistant# Создаем экземпляр класса VoiceAssistant
       # Вызываем метод для объявления информации о помощнике
     while True:
         voice_input = recordAndRecognizeAudio()
