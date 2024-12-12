@@ -1,6 +1,6 @@
 import feedparser
 
-def get_moscow_news_from_rss(rss_url):
+def GetMoscowNewsFromRss(rss_url):
     try:
         feed = feedparser.parse(rss_url)
         if feed.bozo:  # Проверка на ошибки при парсинге RSS
@@ -19,7 +19,7 @@ def get_moscow_news_from_rss(rss_url):
 if __name__ == "__main__":
     num = input("Введите номер интересующей вас новости, например 1, 2 ... 25: ") #каждому номеру соответствует определенный топик из новостей
     rss_url = f"https://govoritmoskva.ru/rss/news/{num}"
-    moscow_news = get_moscow_news_from_rss(rss_url)
+    moscow_news = GetMoscowNewsFromRss(rss_url)
     if moscow_news:
         print("Новости Москвы:")
         for news_item in moscow_news:

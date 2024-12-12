@@ -2,7 +2,7 @@ import time
 import requests
 import json
 
-def get_route_info(api_key, point_a, point_b):
+def GetRouteInfo(api_key, point_a, point_b):
     base_url = "https://api.maps.yandex.ru/1.x/"
     params = {
         "apikey": api_key,

@@ -6,7 +6,7 @@ def reminder(text, sound_file=None): #Выводит напоминание те
     print(f"\n[{now}] Напоминание:\n{text}\n")
 
 
-def set_reminder(text, year, month, day, hour, minute): #напоминание на указанное время
+def SetReminder(text, year, month, day, hour, minute): #напоминание на указанное время
     try:
         reminder_time = datetime(year, month, day, hour, minute)
         if reminder_time <= datetime.now():# Проверка на то, что время в будущем
@@ -29,7 +29,7 @@ if __name__ == "__main__":
     minute = int(input("Введите минуту (MM): "))
     reminder_text = input("Введите текст напоминания: ")
 
-    set_reminder(reminder_text, year, month, day, hour, minute)
+    SetReminder(reminder_text, year, month, day, hour, minute)
 
     while True:
         schedule.run_pending()
