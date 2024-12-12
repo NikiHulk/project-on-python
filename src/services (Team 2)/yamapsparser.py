@@ -41,7 +41,7 @@ if __name__ == "__main__":
     api_key = "....."  #Ваш API ключ
     point_a = input("Введите координаты точки А (широта,долгота): ")
     point_b = input("Введите координаты точки Б (широта,долгота): ")
-    route_info = get_route_info(api_key, point_a, point_b)
+    route_info = GetRouteInfo(api_key, point_a, point_b)
 
     if route_info:
         print("Информация о маршруте:")
