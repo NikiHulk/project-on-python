@@ -4,7 +4,6 @@ import os
 import recordAndRecognizeAudio, executeCommand, commands, greet_user, create_note_interaction, delete_note_interaction #replace your_voice_assistant
 import random
 
-
 #Simplified Note Manager for Testing
 class MockNoteManager:
     def __init__(self):
