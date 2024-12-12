@@ -1,6 +1,6 @@
 import speech_recognition as sr
 import os
-
+import ClassVolumeManager as vm
 import Exchange
 import NoteManagerClass
 import Greetings  # Импортируем модуль с классом Greetings
@@ -24,7 +24,7 @@ def recordAndRecognizeAudio():
             with open("microphone-results.wav", "wb") as file:
                 file.write(audio.get_wav_data())
             print("Распознаю...")
-            speak("Распознаю...")
+            speak("Распознаю")
             recognized_data = recognizer.recognize_google(audio, language="ru").lower()
             return recognized_data
         except sr.WaitTimeoutError:
@@ -51,6 +51,10 @@ commands = {
     ("курс","какой курс", "курс валют"): lambda: Exchange.exchangeRate(currencyUnit=str(input('Введите валюту: '))),
     ("подбрось монетку", "кинь монету", "сыграем в лотерею?"): lambda: TossCoin.tossCoin(self=0),
     ("переводчик", "перевод"): lambda: Translating.translate(),
+    ("громче", "увеличить громкость"): lambda: vm.VolumeManager().AdjustVolume(10),
+    ("тише", "уменьшить громкость"): lambda: vm.VolumeManager().AdjustVolume(-10),
+    ("отключить звук", "без звука"): lambda: vm.VolumeManager().mute(),
+    ("включить звук",): lambda: vm.VolumeManager().mute(),
     # ... добавьте другие команды ...
 }
 
@@ -112,10 +116,12 @@ def executeCommand(command_phrase: str):
 
 
 if __name__ == "__main__":
-    VoiceAssistantClass.VoiceAssistant.voiceAssistantInforamtion()
+    assistant = VoiceAssistantClass.VoiceAssistant# Создаем экземпляр класса VoiceAssistant
+      # Вызываем метод для объявления информации о помощнике
     while True:
         voice_input = recordAndRecognizeAudio()
         if voice_input:
             os.remove("microphone-results.wav")
             print(f"Распознано: {voice_input}")
             executeCommand(voice_input)
+    assistant.announce_information()

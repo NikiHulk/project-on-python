@@ -5,28 +5,28 @@ class PageOpener:
     def __init__(self):
         pass
 
-    def open_youtube(self):
-        self._open_url("https://www.youtube.com")
+    def OpenYoutube(self):
+        self.OpenUrl("https://www.youtube.com")
 
-    def open_rutube(self):
-        self._open_url("https://rutube.ru")
+    def OpenRutube(self):
+        self.OpenUrl("https://rutube.ru")
 
-    def open_vk(self):
-        self._open_url("https://vk.com")
+    def OpenVk(self):
+        self.OpenUrl("https://vk.com")
 
-    def open_telegram(self):
-        self._open_url("https://web.telegram.org")
+    def OpenTelegram(self):
+        self.OpenUrl("https://web.telegram.org")
 
-    def open_vkvideo(self):
-        self._open_url("https://vkvideo.ru/")
+    def OpenVkvideo(self):
+        self.OpenUrl("https://vkvideo.ru/")
 
-    def open_ivi(self):
-        self._open_url("https://www.ivi.ru/")
+    def OpenIvi(self):
+        self.OpenUrl("https://www.ivi.ru/")
 
-    def open_kinopoisk(self):
-        self._open_url("https://www.kinopoisk.ru")
+    def OpenKinopoisk(self):
+        self.OpenUrl("https://www.kinopoisk.ru")
 
-    def _open_url(self, url):
+    def OpenUrl(self, url):
         try:
             webbrowser.open(url)
             print(f"Страница {url} открыта.")
@@ -35,5 +35,5 @@ class PageOpener:
 
 
 opener = PageOpener()
-opener.open_kinopoisk()
+opener.OpenKinopoisk()
 
