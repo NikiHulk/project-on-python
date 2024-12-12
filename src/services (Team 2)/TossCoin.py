@@ -15,8 +15,4 @@ class TossCoin:
                 print(f"Монета подброшена: {result}")
                 speak(f"Монета подброшена, вам выпала {result}")
 
-if __name__ == "__main__":
-    toss = TossCoin()
-    speak("Введите количество подбрасываний монеты")
-    num_tosses = int(input("Введите количество подбрасываний монеты: "))  # Запрашиваем количество подбрасываний
-    toss.tossCoin(num_tosses)
+

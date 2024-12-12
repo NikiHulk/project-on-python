@@ -1,6 +1,6 @@
 import comtypes
 from comtypes import CLSCTX_ALL
-from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
+from pycaw.pycaw import AudioUtilities,IAudioEndpointVolume
 
 class VolumeManager:
     def __init__(self):
