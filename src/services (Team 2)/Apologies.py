@@ -1,5 +1,4 @@
 import random
-
 from SpeechUtils import speak
 
 
@@ -17,7 +16,6 @@ class Apologies:
         excuses = random.choice(config)
         print(excuses)
         speak(excuses)
-
 
 if __name__ == "__main__":
     apologies = Apologies()
