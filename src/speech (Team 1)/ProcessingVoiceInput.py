@@ -5,7 +5,6 @@ import threading
 
 from sympy.polys.polyconfig import query
 
-import ChatAi
 import CheckWiki
 import ClassVolumeManager as VolumeManager
 import Exchange
@@ -25,7 +24,6 @@ import schedule
 import PageOpener
 import CheckMaps
 import webbrowser
-import ChatAi
 from VoiceAssistantClass import VoiceAssistant
 
 
