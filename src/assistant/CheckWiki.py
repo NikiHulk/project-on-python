@@ -1,6 +1,18 @@
 import wikipedia
 
 def searchInWikipedia(query):
+    """
+    Ищет информацию в Википедии по заданному запросу и выводит результат.
+    Args:
+        query (str): Запрос для поиска в Википедии.
+    Returns:
+        None. Выводит результат поиска в консоль.
+    Raises:
+        None.  Функция обрабатывает возможные исключения из библиотеки wikipedia.
+    Notes:
+        Функция использует библиотеку wikipedia.  Необходимо установить её: pip install wikipedia
+    """
+
     try:
         # Пытаемся получить сводку статьи
         summary = wikipedia.summary(query)

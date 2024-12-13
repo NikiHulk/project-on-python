@@ -1,6 +1,18 @@
 import feedparser
 
 def GetMoscowNewsFromRss(rss_url):
+    """
+    Получает заголовки новостей из RSS-ленты сайта Говорит Москва.
+    Args:
+        rss_url (str): URL RSS-ленты.
+    Returns:
+        list: Список заголовков новостей, или None при ошибке.
+    Raises:
+        Exception: При любых ошибках во время обработки RSS-ленты.
+    Notes:
+        Функция использует библиотеку feedparser.  Необходимо установить её: pip install feedparser
+    """
+
     try:
         feed = feedparser.parse(rss_url)
         if feed.bozo:  # Проверка на ошибки при парсинге RSS
