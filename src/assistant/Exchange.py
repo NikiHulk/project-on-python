@@ -30,11 +30,17 @@ def exchangeRate(currencyUnit):
 
     if span:
         value = span.text.strip()
-        print(f"Один Российский рубль равен {value} {currencyUnit}")
-        speak(f"Один Российский рубль равен {value} {currencyUnit}")
+        # Проверяем, если значение курса равно "Not Found"
+        if value == "Not Found":
+            print(f"Не удалось получить курс для валюты {currencyUnit}. Возможно, ошибка в запросе или валюта не поддерживается.")
+            speak(f"Не удалось получить курс для валюты {currencyUnit}. Возможно, ошибка в запросе или валюта не поддерживается.")
+        else:
+            print(f"Один Российский рубль равен {value} {currencyUnit}")
+            speak(f"Один Российский рубль равен {value} {currencyUnit}")
     else:
         print(f"Не удалось получить курс для валюты {currencyUnit}. Возможно, ошибка в запросе или валюта не поддерживается.")
         speak(f"Не удалось получить курс для валюты {currencyUnit}. Возможно, ошибка в запросе или валюта не поддерживается.")
+
 if __name__ == "__main__":
     speak("Введите валюту для получения курса (например, USD, EUR): ")
     currency = input("Введите валюту для получения курса (например, USD, EUR): ")
