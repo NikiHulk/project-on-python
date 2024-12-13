@@ -1,9 +1,5 @@
 import speech_recognition as SpeechRecognizer
-import os
 import time
-import threading
-
-from sympy.polys.polyconfig import query
 
 import CheckWiki
 import ClassVolumeManager as VolumeManager
@@ -12,13 +8,10 @@ import NoteManagerClass
 import Greetings
 import Farewell
 import CheckWeather
-import Apologies
 import Translating
-import VoiceAssistantClass
 from SpeechUtils import speak
 from TossCoin import TossCoin
 from GetMoscowNews import GetMoscowNewsFromRss
-from Reminder import reminder
 from Reminder import setReminder
 import schedule
 import PageOpener
