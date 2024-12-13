@@ -1,6 +1,5 @@
-import pytest
 from unittest.mock import patch
-from assistant.CheckWeather import checkWeatherNow
+from src import checkWeatherNow
 
 
 # Тест для проверки функции checkWeatherNow

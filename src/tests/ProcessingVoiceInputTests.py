@@ -1,6 +1,6 @@
 import pytest
-from unittest.mock import patch, MagicMock
-from assistant.ProcessingVoiceInput import listenForWakeWord, listenForCommands, executeCommand
+from unittest.mock import patch
+from src import listenForWakeWord, executeCommand
 
 # Общий мок для speak
 @pytest.fixture(scope="module")
@@ -66,7 +66,7 @@ def test_executeCommand_known_command(mock_speak):
 def test_create_note_interaction(mock_speak):
     with patch('builtins.input', return_value="Тестовая заметка"):
         with patch('assistant.NoteManagerClass.NotesManager.createNote') as mock_create_note:
-            from assistant.ProcessingVoiceInput import createNoteInteraction
+            from src import createNoteInteraction
             createNoteInteraction()
             mock_create_note.assert_called_with("Тестовая заметка")
             mock_speak.assert_called_with("Заметка создана.")
@@ -76,7 +76,7 @@ def test_delete_note_interaction(mock_speak):
     with patch('assistant.NoteManagerClass.NotesManager.readNotes', return_value=[{'text': 'Заметка 1'}, {'text': 'Заметка 2'}]):
         with patch('builtins.input', return_value="1"):
             with patch('assistant.NoteManagerClass.NotesManager.deleteNote') as mock_delete_note:
-                from assistant.ProcessingVoiceInput import deleteNoteInteraction
+                from src import deleteNoteInteraction
                 deleteNoteInteraction()
                 mock_delete_note.assert_called_with(1)
                 mock_speak.assert_called_with("Заметка удалена.")
@@ -85,7 +85,7 @@ def test_delete_note_interaction(mock_speak):
 def test_connectReminder(mock_speak, mock_time):
     with patch('builtins.input', side_effect=["2024", "12", "14", "15", "30", "Тестовое напоминание"]):
         with patch('assistant.Reminder.setReminder') as mock_setReminder:
-            from assistant.ProcessingVoiceInput import connectReminder
+            from src import connectReminder
             connectReminder()
             mock_setReminder.assert_called_once_with("Тестовое напоминание", 2024, 12, 14, 15, 30)
             mock_speak.assert_called_with("Напоминание установлено.")

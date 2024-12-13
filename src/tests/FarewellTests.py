@@ -1,8 +1,7 @@
 import unittest
 from unittest.mock import patch
-import sys
 from io import StringIO
-from src.assistant.Farewell import Farewell  # Путь импорта зависит от структуры проекта
+from src import Farewell  # Путь импорта зависит от структуры проекта
 
 
 class TestFarewell(unittest.TestCase):

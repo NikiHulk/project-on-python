@@ -1,5 +1,5 @@
 # Импортируем нужные функции из ProcessingVoiceInput
-from src.assistant.ProcessingVoiceInput import listenForWakeWord
+from src import listenForWakeWord
 
 # Точка входа в программу
 if __name__ == "__main__":

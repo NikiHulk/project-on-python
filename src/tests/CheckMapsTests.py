@@ -1,6 +1,5 @@
-import pytest
 from unittest.mock import patch
-from assistant.CheckMaps import getRouteBetweenAddresses, getCoordinates
+from src import getRouteBetweenAddresses
 
 
 def test_getRouteBetweenAddresses():

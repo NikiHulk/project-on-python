@@ -1,6 +1,5 @@
-import pytest
 from unittest.mock import patch, MagicMock
-from src.assistant.SpeechUtils import speak  # Путь к функции speak
+from src import speak  # Путь к функции speak
 
 
 @patch('src.assistant.SpeechUtils.pyttsx3.init')  # Патчим pyttsx3.init

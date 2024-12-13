@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch
-from src.assistant.NoteManagerClass import NotesManager  # Путь к файлу NotesManagerClass.py
+from src import NotesManager  # Путь к файлу NotesManagerClass.py
 
 @pytest.fixture
 def notes_manager():
