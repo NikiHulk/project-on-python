@@ -1,0 +1,909 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>src.assistant.ProcessingVoiceInput</title>
+    <meta name="generator" content="pydoctor 24.11.1"> 
+        
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+    
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          MyProject <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+            
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="apidocs-help-button" title="Help" href="apidocs-help.html"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 10px;">
+          <p>For more information on the search, visit the <a href="apidocs-help.html#rst-search">help page</a>.</p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</nav>
+    
+    <div class="container-fluid">
+
+      <!-- Side navigation -->
+      <div class="sidebarcontainer" style="display: none;">
+        
+        <div class="sidebar"><nav class="sidebar">
+  
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Module</span>
+        <code class="thisobject"><a href="src.assistant.ProcessingVoiceInput.html" class="internal-link" title="This module"><wbr></wbr>Processing<wbr></wbr>Voice<wbr></wbr>Input</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        
+        
+
+        <div class="childrenKindTitle">Functions</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#connectCheckMaps" class="internal-link" title="src.assistant.ProcessingVoiceInput.connectCheckMaps">connect<wbr></wbr>Check<wbr></wbr>Maps</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#connectCheckWiki" class="internal-link" title="src.assistant.ProcessingVoiceInput.connectCheckWiki">connect<wbr></wbr>Check<wbr></wbr>Wiki</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#connectGetMoscowNews" class="internal-link" title="src.assistant.ProcessingVoiceInput.connectGetMoscowNews">connect<wbr></wbr>Get<wbr></wbr>Moscow<wbr></wbr>News</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#connectReminder" class="internal-link" title="src.assistant.ProcessingVoiceInput.connectReminder">connect<wbr></wbr>Reminder</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#connectTossCoin" class="internal-link" title="src.assistant.ProcessingVoiceInput.connectTossCoin">connect<wbr></wbr>Toss<wbr></wbr>Coin</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#createNoteInteraction" class="internal-link" title="src.assistant.ProcessingVoiceInput.createNoteInteraction">create<wbr></wbr>Note<wbr></wbr>Interaction</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#deleteNoteInteraction" class="internal-link" title="src.assistant.ProcessingVoiceInput.deleteNoteInteraction">delete<wbr></wbr>Note<wbr></wbr>Interaction</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#executeCommand" class="internal-link" title="src.assistant.ProcessingVoiceInput.executeCommand">execute<wbr></wbr>Command</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#listenForCommands" class="internal-link" title="src.assistant.ProcessingVoiceInput.listenForCommands">listen<wbr></wbr>For<wbr></wbr>Commands</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#listenForWakeWord" class="internal-link" title="src.assistant.ProcessingVoiceInput.listenForWakeWord">listen<wbr></wbr>For<wbr></wbr>Wake<wbr></wbr>Word</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#searchInYandex" class="internal-link" title="src.assistant.ProcessingVoiceInput.searchInYandex">search<wbr></wbr>In<wbr></wbr>Yandex</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+
+        <div class="childrenKindTitle">Variables</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#commands" class="internal-link" title="src.assistant.ProcessingVoiceInput.commands">commands</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+        
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Package</span>
+        <code><a href="src.assistant.html" class="internal-link" title="The parent of this module">assistant</a></code> 
+      </div>
+      
+      <div>
+        
+
+        <div class="childrenKindTitle">Modules</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.assistant.Apologies.html" class="internal-link" title="src.assistant.Apologies"><wbr></wbr>Apologies</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.assistant.CheckMaps.html" class="internal-link" title="src.assistant.CheckMaps"><wbr></wbr>Check<wbr></wbr>Maps</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.assistant.CheckWeather.html" class="internal-link" title="src.assistant.CheckWeather"><wbr></wbr>Check<wbr></wbr>Weather</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.assistant.CheckWiki.html" class="internal-link" title="src.assistant.CheckWiki"><wbr></wbr>Check<wbr></wbr>Wiki</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.assistant.ClassVolumeManager.html" class="internal-link" title="src.assistant.ClassVolumeManager"><wbr></wbr>Class<wbr></wbr>Volume<wbr></wbr>Manager</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.assistant.Exchange.html" class="internal-link" title="src.assistant.Exchange"><wbr></wbr>Exchange</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.assistant.Farewell.html" class="internal-link" title="src.assistant.Farewell"><wbr></wbr>Farewell</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.assistant.GetMoscowNews.html" class="internal-link" title="src.assistant.GetMoscowNews"><wbr></wbr>Get<wbr></wbr>Moscow<wbr></wbr>News</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.assistant.Greetings.html" class="internal-link" title="src.assistant.Greetings"><wbr></wbr>Greetings</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.assistant.NoteManagerClass.html" class="internal-link" title="src.assistant.NoteManagerClass"><wbr></wbr>Note<wbr></wbr>Manager<wbr></wbr>Class</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.assistant.PageOpener.html" class="internal-link" title="src.assistant.PageOpener"><wbr></wbr>Page<wbr></wbr>Opener</a></code>
+            </div>
+        
+
+    </li><li class=" thisobject">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.assistant.ProcessingVoiceInput.html" class="internal-link" title="src.assistant.ProcessingVoiceInput"><wbr></wbr>Processing<wbr></wbr>Voice<wbr></wbr>Input</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.assistant.RebootManager.html" class="internal-link" title="src.assistant.RebootManager"><wbr></wbr>Reboot<wbr></wbr>Manager</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.assistant.Reminder.html" class="internal-link" title="src.assistant.Reminder"><wbr></wbr>Reminder</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.assistant.ShutdownManager.html" class="internal-link" title="src.assistant.ShutdownManager"><wbr></wbr>Shutdown<wbr></wbr>Manager</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.assistant.SpeechUtils.html" class="internal-link" title="src.assistant.SpeechUtils"><wbr></wbr>Speech<wbr></wbr>Utils</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.assistant.TossCoin.html" class="internal-link" title="src.assistant.TossCoin"><wbr></wbr>Toss<wbr></wbr>Coin</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.assistant.Translating.html" class="internal-link" title="src.assistant.Translating"><wbr></wbr>Translating</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.assistant.VoiceAssistantClass.html" class="internal-link" title="src.assistant.VoiceAssistantClass"><wbr></wbr>Voice<wbr></wbr>Assistant<wbr></wbr>Class</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+        
+
+        
+         
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div>
+
+</nav>
+        </div>
+        <div id="collapseSideBar">
+          <a class="btn btn-link" onclick="toggleSideBarCollapse()" title="Toggle Sidebar Collapse">
+          </a>
+        </div> 
+        <script src="sidebartoggle.js" type="text/javascript"></script>
+       
+      </div>
+
+      <div id="main" class="">
+        
+
+        
+
+        <div class="page-header">
+          <h1 class="module"><code><code><a href="index.html" class="internal-link">src</a></code><wbr></wbr>.<code><a href="src.assistant.html" class="internal-link" title="src.assistant">assistant</a></code><wbr></wbr>.<code><a href="src.assistant.ProcessingVoiceInput.html" class="internal-link" title="src.assistant.ProcessingVoiceInput">ProcessingVoiceInput</a></code></code></h1>
+          <div id="showPrivate">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
+
+        <div class="categoryHeader">
+          module documentation
+        </div>
+
+        <div class="extrasDocstring">
+          
+          <p></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p class="undocumented">Undocumented</p></div>
+        </div>
+
+        <div id="splitTables">
+          <table class="children sortable" id="id19">
+  
+  
+  <tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#connectCheckMaps" class="internal-link" title="src.assistant.ProcessingVoiceInput.connectCheckMaps">connect<wbr></wbr>Check<wbr></wbr>Maps</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#connectCheckWiki" class="internal-link" title="src.assistant.ProcessingVoiceInput.connectCheckWiki">connect<wbr></wbr>Check<wbr></wbr>Wiki</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#connectGetMoscowNews" class="internal-link" title="src.assistant.ProcessingVoiceInput.connectGetMoscowNews">connect<wbr></wbr>Get<wbr></wbr>Moscow<wbr></wbr>News</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#connectReminder" class="internal-link" title="src.assistant.ProcessingVoiceInput.connectReminder">connect<wbr></wbr>Reminder</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#connectTossCoin" class="internal-link" title="src.assistant.ProcessingVoiceInput.connectTossCoin">connect<wbr></wbr>Toss<wbr></wbr>Coin</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#createNoteInteraction" class="internal-link" title="src.assistant.ProcessingVoiceInput.createNoteInteraction">create<wbr></wbr>Note<wbr></wbr>Interaction</a></code></td>
+    <td>Взаимодействие с пользователем для создания заметки.</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#deleteNoteInteraction" class="internal-link" title="src.assistant.ProcessingVoiceInput.deleteNoteInteraction">delete<wbr></wbr>Note<wbr></wbr>Interaction</a></code></td>
+    <td>Взаимодействие с пользователем для удаления заметки.</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#executeCommand" class="internal-link" title="src.assistant.ProcessingVoiceInput.executeCommand">execute<wbr></wbr>Command</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#listenForCommands" class="internal-link" title="src.assistant.ProcessingVoiceInput.listenForCommands">listen<wbr></wbr>For<wbr></wbr>Commands</a></code></td>
+    <td>Функция для прослушивания команд пользователя после активации ассистента.</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#listenForWakeWord" class="internal-link" title="src.assistant.ProcessingVoiceInput.listenForWakeWord">listen<wbr></wbr>For<wbr></wbr>Wake<wbr></wbr>Word</a></code></td>
+    <td>Функция для прослушивания ключевого слова для активации ассистента.</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#searchInYandex" class="internal-link" title="src.assistant.ProcessingVoiceInput.searchInYandex">search<wbr></wbr>In<wbr></wbr>Yandex</a></code></td>
+    <td>Функция для поиска в Yandex при неизвестной команде.</td>
+  </tr><tr class="variable">
+    
+    <td>Variable</td>
+    <td><code><a href="#commands" class="internal-link" title="src.assistant.ProcessingVoiceInput.commands">commands</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+          
+
+            
+        </div>
+
+        <div id="childList">
+          <div class="basefunction">
+  
+  
+  <a name="src.assistant.ProcessingVoiceInput.connectCheckMaps">
+    
+  </a>
+  <a name="connectCheckMaps">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">connectCheckMaps</span><span class="function-signature">()</span>:
+    
+    <a class="headerLink" href="#connectCheckMaps" title="src.assistant.ProcessingVoiceInput.connectCheckMaps">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="src.assistant.ProcessingVoiceInput.connectCheckWiki">
+    
+  </a>
+  <a name="connectCheckWiki">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">connectCheckWiki</span><span class="function-signature">()</span>:
+    
+    <a class="headerLink" href="#connectCheckWiki" title="src.assistant.ProcessingVoiceInput.connectCheckWiki">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="src.assistant.ProcessingVoiceInput.connectGetMoscowNews">
+    
+  </a>
+  <a name="connectGetMoscowNews">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">connectGetMoscowNews</span><span class="function-signature">()</span>:
+    
+    <a class="headerLink" href="#connectGetMoscowNews" title="src.assistant.ProcessingVoiceInput.connectGetMoscowNews">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="src.assistant.ProcessingVoiceInput.connectReminder">
+    
+  </a>
+  <a name="connectReminder">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">connectReminder</span><span class="function-signature">()</span>:
+    
+    <a class="headerLink" href="#connectReminder" title="src.assistant.ProcessingVoiceInput.connectReminder">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="src.assistant.ProcessingVoiceInput.connectTossCoin">
+    
+  </a>
+  <a name="connectTossCoin">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">connectTossCoin</span><span class="function-signature">()</span>:
+    
+    <a class="headerLink" href="#connectTossCoin" title="src.assistant.ProcessingVoiceInput.connectTossCoin">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="src.assistant.ProcessingVoiceInput.createNoteInteraction">
+    
+  </a>
+  <a name="createNoteInteraction">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">createNoteInteraction</span><span class="function-signature">()</span>:
+    
+    <a class="headerLink" href="#createNoteInteraction" title="src.assistant.ProcessingVoiceInput.createNoteInteraction">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Взаимодействие с пользователем для создания заметки.</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="src.assistant.ProcessingVoiceInput.deleteNoteInteraction">
+    
+  </a>
+  <a name="deleteNoteInteraction">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">deleteNoteInteraction</span><span class="function-signature">()</span>:
+    
+    <a class="headerLink" href="#deleteNoteInteraction" title="src.assistant.ProcessingVoiceInput.deleteNoteInteraction">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Взаимодействие с пользователем для удаления заметки.</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="src.assistant.ProcessingVoiceInput.executeCommand">
+    
+  </a>
+  <a name="executeCommand">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">executeCommand</span><span class="function-signature">(commandPhrase: <code>str</code>)</span>:
+    
+    <a class="headerLink" href="#executeCommand" title="src.assistant.ProcessingVoiceInput.executeCommand">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="src.assistant.ProcessingVoiceInput.listenForCommands">
+    
+  </a>
+  <a name="listenForCommands">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">listenForCommands</span><span class="function-signature">()</span>:
+    
+    <a class="headerLink" href="#listenForCommands" title="src.assistant.ProcessingVoiceInput.listenForCommands">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Функция для прослушивания команд пользователя после активации ассистента.</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="src.assistant.ProcessingVoiceInput.listenForWakeWord">
+    
+  </a>
+  <a name="listenForWakeWord">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">listenForWakeWord</span><span class="function-signature">()</span>:
+    
+    <a class="headerLink" href="#listenForWakeWord" title="src.assistant.ProcessingVoiceInput.listenForWakeWord">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Функция для прослушивания ключевого слова для активации ассистента.</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="src.assistant.ProcessingVoiceInput.searchInYandex">
+    
+  </a>
+  <a name="searchInYandex">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">searchInYandex</span><span class="function-signature">(query)</span>:
+    
+    <a class="headerLink" href="#searchInYandex" title="src.assistant.ProcessingVoiceInput.searchInYandex">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Функция для поиска в Yandex при неизвестной команде.</p></div>
+  </div>
+</div><div class="basevariable">
+  
+  
+  <a name="src.assistant.ProcessingVoiceInput.commands">
+    
+  </a>
+  <a name="commands">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">commands</span> =
+    
+    <a class="headerLink" href="#commands" title="src.assistant.ProcessingVoiceInput.commands">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div>
+        </div>
+      
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container-fluid">
+    <a href="index.html">API Documentation</a> for MyProject,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    24.11.1 at 2024-12-14 05:50:29.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+  
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

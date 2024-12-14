@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>src.assistant.ClassVolumeManager.VolumeManager</title>
+    <meta name="generator" content="pydoctor 24.11.1"> 
+        
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+    
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          MyProject <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+            
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="apidocs-help-button" title="Help" href="apidocs-help.html"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 10px;">
+          <p>For more information on the search, visit the <a href="apidocs-help.html#rst-search">help page</a>.</p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</nav>
+    
+    <div class="container-fluid">
+
+      <!-- Side navigation -->
+      <div class="sidebarcontainer" style="display: none;">
+        
+        <div class="sidebar"><nav class="sidebar">
+  
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Class</span>
+        <code class="thisobject"><a href="src.assistant.ClassVolumeManager.VolumeManager.html" class="internal-link" title="This class"><wbr></wbr>Volume<wbr></wbr>Manager</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        
+        
+
+        <div class="childrenKindTitle">Methods</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__init__" class="internal-link" title="src.assistant.ClassVolumeManager.VolumeManager.__init__">__init__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#AdjustVolume" class="internal-link" title="src.assistant.ClassVolumeManager.VolumeManager.AdjustVolume"><wbr></wbr>Adjust<wbr></wbr>Volume</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#GetVolume" class="internal-link" title="src.assistant.ClassVolumeManager.VolumeManager.GetVolume"><wbr></wbr>Get<wbr></wbr>Volume</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#GetVolumeController" class="internal-link" title="src.assistant.ClassVolumeManager.VolumeManager.GetVolumeController"><wbr></wbr>Get<wbr></wbr>Volume<wbr></wbr>Controller</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#IsMuted" class="internal-link" title="src.assistant.ClassVolumeManager.VolumeManager.IsMuted"><wbr></wbr>Is<wbr></wbr>Muted</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#mute" class="internal-link" title="src.assistant.ClassVolumeManager.VolumeManager.mute">mute</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#SetVolume" class="internal-link" title="src.assistant.ClassVolumeManager.VolumeManager.SetVolume"><wbr></wbr>Set<wbr></wbr>Volume</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+
+        <div class="childrenKindTitle">Attributes</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#volume" class="internal-link" title="src.assistant.ClassVolumeManager.VolumeManager.volume">volume</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+        
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Module</span>
+        <code><a href="src.assistant.ClassVolumeManager.html" class="internal-link" title="The parent of this class"><wbr></wbr>Class<wbr></wbr>Volume<wbr></wbr>Manager</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        <div class="childrenKindTitle">Classes</div>
+        <ul>
+    
+    <li class=" thisobject">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="src.assistant.ClassVolumeManager.VolumeManager.html" class="internal-link" title="src.assistant.ClassVolumeManager.VolumeManager"><wbr></wbr>Volume<wbr></wbr>Manager</a></code>
+            </div>
+        
+
+    </li>
+</ul>
+
+        
+         
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div>
+
+</nav>
+        </div>
+        <div id="collapseSideBar">
+          <a class="btn btn-link" onclick="toggleSideBarCollapse()" title="Toggle Sidebar Collapse">
+          </a>
+        </div> 
+        <script src="sidebartoggle.js" type="text/javascript"></script>
+       
+      </div>
+
+      <div id="main" class="">
+        
+
+        
+
+        <div class="page-header">
+          <h1 class="class"><code><code><a href="index.html" class="internal-link">src</a></code><wbr></wbr>.<code><a href="src.assistant.html" class="internal-link" title="src.assistant">assistant</a></code><wbr></wbr>.<code><a href="src.assistant.ClassVolumeManager.html" class="internal-link" title="src.assistant.ClassVolumeManager">ClassVolumeManager</a></code><wbr></wbr>.<code><a href="src.assistant.ClassVolumeManager.VolumeManager.html" class="internal-link" title="src.assistant.ClassVolumeManager.VolumeManager">VolumeManager</a></code></code></h1>
+          <div id="showPrivate">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
+
+        <div class="categoryHeader">
+          class documentation
+        </div>
+
+        <div class="extrasDocstring">
+          <p class="class-signature"><code><span class="py-keyword">class</span> <span class="py-defname">VolumeManager</span>:</code></p><p>Constructor: <code><a href="#__init__" class="internal-link" title="src.assistant.ClassVolumeManager.VolumeManager.__init__">VolumeManager()</a></code></p>
+          <p><a href="classIndex.html#src.assistant.ClassVolumeManager.VolumeManager">View In Hierarchy</a></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p class="pre">Класс для управления громкостью системы.
+
+Этот класс предоставляет методы для регулировки громкости, получения текущего уровня громкости,
+установки нужного уровня громкости, а также включения/выключения звука.
+
+Методы:
+    GetVolumeController(): Возвращает объект контроллера громкости.
+    AdjustVolume(adjustment): Регулирует громкость на заданное значение (положительное - увеличить, отрицательное - уменьшить).
+    GetVolume(): Возвращает текущий уровень громкости в процентах (0-100).
+    SetVolume(level): Устанавливает уровень громкости в процентах (0-100).
+    mute(): Включает или выключает звук.
+    IsMuted(): Проверяет, выключен ли звук, возвращает True если звук выключен, иначе False.</p></div>
+        </div>
+
+        <div id="splitTables">
+          <table class="children sortable" id="id9">
+  
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__" class="internal-link" title="src.assistant.ClassVolumeManager.VolumeManager.__init__">__init__</a></code></td>
+    <td>Конструктор для инициализации объекта VolumeManager. При инициализации автоматически получает контроллер громкости.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#AdjustVolume" class="internal-link" title="src.assistant.ClassVolumeManager.VolumeManager.AdjustVolume"><wbr></wbr>Adjust<wbr></wbr>Volume</a></code></td>
+    <td>Регулирует громкость на заданное количество.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#GetVolume" class="internal-link" title="src.assistant.ClassVolumeManager.VolumeManager.GetVolume"><wbr></wbr>Get<wbr></wbr>Volume</a></code></td>
+    <td>Возвращает текущий уровень громкости в процентах.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#GetVolumeController" class="internal-link" title="src.assistant.ClassVolumeManager.VolumeManager.GetVolumeController"><wbr></wbr>Get<wbr></wbr>Volume<wbr></wbr>Controller</a></code></td>
+    <td>Получает и возвращает контроллер громкости для системных динамиков.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#IsMuted" class="internal-link" title="src.assistant.ClassVolumeManager.VolumeManager.IsMuted"><wbr></wbr>Is<wbr></wbr>Muted</a></code></td>
+    <td>Проверяет, выключен ли звук.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#mute" class="internal-link" title="src.assistant.ClassVolumeManager.VolumeManager.mute">mute</a></code></td>
+    <td>Включает или выключает звук.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#SetVolume" class="internal-link" title="src.assistant.ClassVolumeManager.VolumeManager.SetVolume"><wbr></wbr>Set<wbr></wbr>Volume</a></code></td>
+    <td>Устанавливает уровень громкости.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#volume" class="internal-link" title="src.assistant.ClassVolumeManager.VolumeManager.volume">volume</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+          
+
+            
+        </div>
+
+        <div id="childList">
+          <div class="basemethod">
+  
+  
+  <a name="src.assistant.ClassVolumeManager.VolumeManager.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__init__</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#__init__" title="src.assistant.ClassVolumeManager.VolumeManager.__init__">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Конструктор для инициализации объекта VolumeManager. При инициализации автоматически получает контроллер громкости.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.assistant.ClassVolumeManager.VolumeManager.AdjustVolume">
+    
+  </a>
+  <a name="AdjustVolume">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">AdjustVolume</span><span class="function-signature">(self, adjustment)</span>:
+    
+    <a class="headerLink" href="#AdjustVolume" title="src.assistant.ClassVolumeManager.VolumeManager.AdjustVolume">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">Регулирует громкость на заданное количество.
+
+Аргументы:
+    adjustment (int): Положительное число для увеличения громкости, отрицательное для уменьшения.
+
+Если контроллер громкости доступен, изменяет текущий уровень громкости.
+Если контроллер недоступен, выводит сообщение об ошибке.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.assistant.ClassVolumeManager.VolumeManager.GetVolume">
+    
+  </a>
+  <a name="GetVolume">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">GetVolume</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#GetVolume" title="src.assistant.ClassVolumeManager.VolumeManager.GetVolume">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">Возвращает текущий уровень громкости в процентах.
+
+Возвращает:
+    int: Уровень громкости в процентах (0-100).
+    None: Если контроллер громкости недоступен.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.assistant.ClassVolumeManager.VolumeManager.GetVolumeController">
+    
+  </a>
+  <a name="GetVolumeController">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">GetVolumeController</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#GetVolumeController" title="src.assistant.ClassVolumeManager.VolumeManager.GetVolumeController">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">Получает и возвращает контроллер громкости для системных динамиков.
+
+Возвращает:
+    IAudioEndpointVolume: Контроллер громкости.
+
+Исключения:
+    Если не удается получить контроллер громкости, выводится сообщение об ошибке.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.assistant.ClassVolumeManager.VolumeManager.IsMuted">
+    
+  </a>
+  <a name="IsMuted">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">IsMuted</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#IsMuted" title="src.assistant.ClassVolumeManager.VolumeManager.IsMuted">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">Проверяет, выключен ли звук.
+
+Возвращает:
+    bool: True, если звук выключен; False, если звук включен.
+    None: Если контроллер громкости недоступен.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.assistant.ClassVolumeManager.VolumeManager.mute">
+    
+  </a>
+  <a name="mute">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">mute</span><span class="function-signature">(self)</span>:
+    
+    <a class="headerLink" href="#mute" title="src.assistant.ClassVolumeManager.VolumeManager.mute">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Включает или выключает звук.</p>
+<p>Если контроллер громкости доступен, изменяет состояние звука (включение/выключение). Если контроллер недоступен, выводит сообщение об ошибке.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.assistant.ClassVolumeManager.VolumeManager.SetVolume">
+    
+  </a>
+  <a name="SetVolume">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">SetVolume</span><span class="function-signature">(self, level)</span>:
+    
+    <a class="headerLink" href="#SetVolume" title="src.assistant.ClassVolumeManager.VolumeManager.SetVolume">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="pre">Устанавливает уровень громкости.
+
+Аргументы:
+    level (int): Новый уровень громкости (0-100).
+
+Если контроллер громкости доступен, устанавливает новый уровень громкости.
+Если контроллер недоступен, выводит сообщение об ошибке.</p></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.assistant.ClassVolumeManager.VolumeManager.volume">
+    
+  </a>
+  <a name="volume">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">volume</span> =
+    
+    <a class="headerLink" href="#volume" title="src.assistant.ClassVolumeManager.VolumeManager.volume">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div>
+        </div>
+      
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container-fluid">
+    <a href="index.html">API Documentation</a> for MyProject,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    24.11.1 at 2024-12-14 05:50:29.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+  
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>
