@@ -9,7 +9,7 @@ class RebootManager:
     """
 
     # TODO -> модуль speech
-    def rebootManager(restart):
+    def rebootManager(restart, test_mode = False):
 
         """
         Перезагружает систему или завершает работу в зависимости от переданного параметра.
@@ -21,6 +21,10 @@ class RebootManager:
         Возвращает:
         None
         """
+
+        if test_mode:
+            return "shutdown /r /t 5" if restart else "exit"
+
 
         if restart == True:
             os.system("shutdown /r /t 5")

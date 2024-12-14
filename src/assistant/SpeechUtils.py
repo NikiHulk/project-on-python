@@ -12,6 +12,6 @@ def speak(text):
     Возвращает:
     None
     """
-
+    engine = pyttsx3.init()
     engine.say(text)
     engine.runAndWait()

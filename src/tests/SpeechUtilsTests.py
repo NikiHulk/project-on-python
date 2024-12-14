@@ -1,33 +1,25 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from src.assistant.SpeechUtils import speak  # Путь к функции speak
+from src.assistant.SpeechUtils import speak  # Убедитесь, что путь корректен
 
-
-@patch('src.assistant.SpeechUtils.pyttsx3.init')  # Патчим pyttsx3.init
+# Замените путь в зависимости от импорта в SpeechUtils.py
+@patch('src.assistant.SpeechUtils.pyttsx3.init')
 def test_speak(mock_init):
     """
-    Тестируем функцию speak, чтобы убедиться, что она правильно вызывает методы
-    pyttsx3 для озвучивания текста.
+    Тестируем функцию speak.
     """
-    # Создаем мок для объекта, возвращаемого pyttsx3.init
+    # Настройка мока
     mock_engine = MagicMock()
-    mock_init.return_value = mock_engine  # mock_init вернет этот объект при вызове
+    mock_init.return_value = mock_engine
 
-    # Тестируем функцию speak
+    # Тестируемый текст
     test_text = "Привет, как дела?"
 
-    print("Calling speak function...")  # Для дебага
+    # Вызов функции
     speak(test_text)
 
-    # Печатаем информацию о вызове pyttsx3.init
-    print("Was pyttsx3.init called?", mock_init.called)  # Проверяем, был ли вызван pyttsx3.init
-
-    # Печатаем все вызовы для мокированного объекта
-    print("Was engine.say called?", mock_engine.say.call_args_list)  # Проверяем, был ли вызван say
-    print("Was engine.runAndWait called?", mock_engine.runAndWait.call_args_list)  # Проверяем, был ли вызван runAndWait
-
-    # Проверяем, что engine.say был вызван с правильным текстом
-    mock_engine.say.assert_called_with(test_text)  # Проверяем, что say был вызван с правильным текстом
-
-    # Проверяем, что engine.runAndWait был вызван
-    mock_engine.runAndWait.assert_called_once()  # Проверяем, что runAndWait был вызван один раз
+    # Проверка вызовов
+    print(f"mock_init.called: {mock_init.called}")  # Для диагностики
+    mock_init.assert_called_once()  # Убедитесь, что init вызван
+    mock_engine.say.assert_called_once_with(test_text)
+    mock_engine.runAndWait.assert_called_once()
