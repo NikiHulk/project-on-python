@@ -1,5 +1,5 @@
 from unittest.mock import patch
-from src import exchangeRate
+from src.assistant.Exchange import exchangeRate
 
 
 # Мокируем requests.get, чтобы не делать реальный HTTP-запрос

@@ -1,7 +1,7 @@
 # tests/TranslatingTests.py
 
 from unittest.mock import patch
-from src import translate
+from src.assistant.Translating import translate
 
 
 # Тестирование успешного перевода

@@ -3,7 +3,7 @@ from unittest.mock import patch
 from datetime import datetime, timedelta
 
 # Импортируем функции из вашего модуля
-from src import reminder, setReminder
+from src.assistant.Reminder import reminder, setReminder
 
 
 class TestReminderFunctions(unittest.TestCase):

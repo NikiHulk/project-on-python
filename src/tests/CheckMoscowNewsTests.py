@@ -1,5 +1,5 @@
 from unittest.mock import patch, MagicMock
-from src import GetMoscowNewsFromRss
+from src.assistant.GetMoscowNews import GetMoscowNewsFromRss
 
 # Тест на корректный парсинг RSS
 def test_get_moscow_news_success():

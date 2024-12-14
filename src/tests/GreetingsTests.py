@@ -1,5 +1,5 @@
 from unittest.mock import patch
-from src import Greetings
+from src.assistant.Greetings import Greetings
 
 
 def test_play_greetings_with_name():
