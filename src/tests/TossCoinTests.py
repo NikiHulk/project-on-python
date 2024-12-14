@@ -1,7 +1,8 @@
 # tests/TossCoinTests.py
 
+import pytest
 from unittest.mock import patch
-from src import TossCoin
+from src.assistant.TossCoin import TossCoin
 
 
 # Тестирование правильности работы подбрасывания монеты

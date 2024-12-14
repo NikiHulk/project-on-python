@@ -1,7 +1,8 @@
 # tests/VoiceAssistantTests.py
 
+import pytest
 from unittest.mock import patch
-from src import VoiceAssistant
+from src.assistant.VoiceAssistantClass import VoiceAssistant
 
 # Тестирование метода voiceAssistantInforamtion
 @patch('src.assistant.VoiceAssistantClass.speak')

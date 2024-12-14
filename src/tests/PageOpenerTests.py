@@ -1,8 +1,9 @@
 import unittest
 from unittest.mock import patch
+import webbrowser
 
 # Импортируем только те функции, которые есть в файле
-from src import openVkontakte, openVkVideo, openKinopoisk, openIvi, openRutube, openYouTube, openTelegram, openYandexMaps
+from assistant.PageOpener import openVkontakte, openVkVideo, openKinopoisk, openIvi, openRutube, openYouTube, openTelegram, openYandexMaps
 
 
 class TestWebFunctions(unittest.TestCase):

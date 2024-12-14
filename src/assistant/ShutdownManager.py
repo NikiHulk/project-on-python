@@ -14,29 +14,18 @@ class ShutdownManager:
         """
         Выключает систему или завершает программу.
 
-        В зависимости от флага `restart`, метод может либо выключить систему с задержкой,
-        либо завершить программу.
-
         Args:
             restart (bool): Флаг, указывающий, следует ли выключить систему.
-                             Если True, система будет выключена; если False, программа завершится.
-
-        Raises:
-            OSError: Если операционная система не поддерживается для выключения, например, Linux или macOS.
-            OSError: Если операционная система неизвестна.
-
-        Example:
-            shutdownManager(True)  # Выключить систему.
-            shutdownManager(False)  # Завершить программу.
+            Если True, система выключается; иначе программа завершится.
         """
 
         platform = system().lower()  # Получаем имя операционной системы в нижнем регистре
 
         if platform == 'windows':
             if restart:
-                os.system("shutdown /s /t 5")  # Выключение Windows с задержкой 5 секунд
+                os.system("shutdown /s /t 5")
             else:
-                exit()  # Завершаем программу
+                exit()
 
         elif platform == 'linux' or platform == 'darwin':
             raise OSError(f"Операционная система {platform} не поддерживается для выключения.")

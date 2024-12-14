@@ -7,25 +7,19 @@ from SpeechUtils import speak
 def checkWeatherNow(city):
     """
     Получает и озвучивает текущую погоду для заданного города с использованием Google Weather.
-
-    Этот метод использует веб-скрапинг страницы Google Weather для получения информации о текущей погоде, включая температуру, влажность,
-    время и скорость ветра. После этого данные выводятся в консоль и озвучиваются с помощью функции speak() из модуля SpeechUtils.
-
-    Аргументы:
-        city (str): Название города для получения прогноза погоды.
-
-    Возвращает:
-        None. Функция выводит информацию о текущей погоде в консоль и озвучивает её.
-
-    Исключения:
-        requests.exceptions.RequestException: При ошибках HTTP-запроса.
-        IndexError: Если на странице Google Weather отсутствуют ожидаемые элементы.
-        ValueError: При ошибках обработки данных.
-
-    Примечания:
-        - Функция использует веб-скрапинг страницы Google Weather, структура которой может изменяться.
-        - Необходимо установить библиотеки requests и beautifulsoup4: pip install requests beautifulsoup4
+    Args:
+        city (str): Название города.
+    Returns:
+        None. Выводит информацию о погоде в консоль и озвучивает её с помощью SpeechUtils.speak().
+    Raises:
+            requests.exceptions.RequestException: При ошибках HTTP-запроса.
+            IndexError: Если на странице Google Weather отсутствуют ожидаемые элементы.
+            ValueError: При ошибках обработки данных.
+    Notes:
+            Функция использует веб-скрапинг страницы Google Weather.  Структура страницы может измениться, что может привести к ошибкам.
+            Необходимо установить библиотеки requests и beautifulsoup4: pip install requests beautifulsoup4
     """
+
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 YaBrowser/24.10.0.0 Safari/537.36"
     }
@@ -61,3 +55,7 @@ def checkWeatherNow(city):
           f"Влажность составляет: {humidity} \n"
           f"Настоящее время: {time[:1].upper() + time[1:]} \n"
           f"Ветер: {windForecast}")
+
+if __name__ == "__main__":
+    city = input("Введите город: ")  # Получаем город от пользователя
+    checkWeatherNow(city)

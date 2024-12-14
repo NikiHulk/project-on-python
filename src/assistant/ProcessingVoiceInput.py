@@ -21,12 +21,7 @@ from VoiceAssistantClass import VoiceAssistant
 
 
 def listenForWakeWord():
-    """
-    Слушает ключевое слово для активации голосового ассистента.
-
-    Эта функция использует микрофон для прослушивания ключевого слова ("привет ева").
-    После его распознавания активируется слушание команд пользователя.
-    """
+    """Функция для прослушивания ключевого слова для активации ассистента."""
     recognizer = SpeechRecognizer.Recognizer()
     with SpeechRecognizer.Microphone() as source:
         recognizer.adjust_for_ambient_noise(source, duration=2)
@@ -49,13 +44,7 @@ def listenForWakeWord():
 
 
 def listenForCommands():
-    """
-    Слушает команды пользователя после активации ассистента.
-
-    После активации ассистента эта функция будет непрерывно слушать команды
-    пользователя и вызывать соответствующие функции для их выполнения.
-    При ошибках в распознавании или тайм-ауте будет уведомлять пользователя.
-    """
+    """Функция для прослушивания команд пользователя после активации ассистента."""
     recognizer = SpeechRecognizer.Recognizer()
     with SpeechRecognizer.Microphone() as source:
         recognizer.adjust_for_ambient_noise(source, duration=2)
@@ -79,12 +68,7 @@ def listenForCommands():
 
 
 def searchInYandex(query):
-    """
-    Выполняет поиск в Яндекс по запросу пользователя.
-
-    Если команда не распознана, пользователю предлагается выполнить поиск
-    в Яндекс и открывает результаты поиска по заданному запросу.
-    """
+    """Функция для поиска в Yandex при неизвестной команде."""
     speak(f"Неизвестная команда: {query}. Хотите, чтобы я нашел это в Яндекс?")
     response = input(f"Неизвестная команда: {query}. Хотите, чтобы я нашел это в Яндекс? (да/нет): ").strip().lower()
     if response == "да" or response == "yes":
@@ -96,12 +80,7 @@ def searchInYandex(query):
 
 
 def executeCommand(commandPhrase: str):
-    """
-    Выполняет команду, если она распознана, или выполняет поиск в Яндекс, если команда неизвестна.
-
-    Эта функция перебирает все доступные команды и пытается выполнить соответствующую функцию.
-    Если команда не распознана, предложит выполнить поиск в Яндекс.
-    """
+    """Выполняет команду, если она распознана, иначе выполняет поиск в Яндекс."""
     for key, func in commands.items():
         for keyword in key:
             if keyword in commandPhrase:
@@ -144,7 +123,7 @@ commands = {
     ("открой telegram", "telegram"): lambda: PageOpener.openTelegram(),
     ("открой яндекс карты", "яндекс карты", "карты"): lambda: PageOpener.openYandexMaps(),
     ("дорога", "путь"): lambda: connectCheckMaps(),
-    ("википедия", "найди в википедии"): lambda: connectCheckWiki()
+    ("википедия","найди в википедии"): lambda: connectCheckWiki()
 }
 
 def connectCheckWiki():
@@ -152,15 +131,16 @@ def connectCheckWiki():
     Запускает поиск в Википедии по запросу пользователя.
     Запрашивает у пользователя поисковый запрос и передает его функции searchInWikipedia класса CheckWiki.
     """
+
     query = str(input("Введите ваш запрос: "))
     CheckWiki.searchInWikipedia(query)
 
-
 def connectTossCoin():
     """
-    Имитирует подбрасывание монеты указанное пользователем количество раз.
-    Запрашивает у пользователя количество подбрасываний и передает его в метод tossCoin класса TossCoin.
+       Имитирует подбрасывание монеты указанное пользователем количество раз.
+       Запрашивает у пользователя количество подбрасываний и передает его в метод tossCoin класса TossCoin.
     """
+
     toss = TossCoin()
     speak("Введите количество подбрасываний монеты")
     numTosses = int(input("Введите количество подбрасываний монеты: "))  # Запрашиваем количество подбрасываний
@@ -172,6 +152,7 @@ def connectCheckMaps():
     Получает маршрут между двумя адресами с помощью сервиса карт (предполагается CheckMaps).
     Запрашивает у пользователя начальный и конечный адреса и передает их функции getRouteBetweenAddresses класса CheckMaps.
     """
+
     startAddress = input("Введите адрес, откуда собираетесь добираться: ")
     endAddress = input("Введите адрес, куда собираетесь добираться: ")
     CheckMaps.getRouteBetweenAddresses(startAddress, endAddress)
@@ -183,6 +164,7 @@ def connectReminder():
     Запрашивает у пользователя дату, время и текст напоминания, а затем устанавливает напоминание с помощью функции setReminder.
     Функция работает в цикле, постоянно проверяя и выполняя запланированные напоминания.
     """
+
     year = int(input("Введите год (YYYY): "))
     month = int(input("Введите месяц (MM): "))
     day = int(input("Введите день (DD): "))
@@ -200,8 +182,7 @@ def connectReminder():
 def connectGetMoscowNews():
     """
     Получает и выводит новости Москвы из RSS-ленты по указанному номеру.
-    Запрашивает у пользователя номер новости, формирует URL RSS-ленты и передает его функции GetMoscowNewsFromRss.
-    """
+    Запрашивает у пользователя номер новости, формирует URL RSS-ленты и передает его функции GetMoscowNewsFromRss."""
     num = input(
         "Введите номер интересующей вас новости, например 1, 2 ... 25: ")  # каждому номеру соответствует определенный топик из новостей
     rssUrl = f"https://govoritmoskva.ru/rss/news/{num}"
@@ -214,8 +195,7 @@ def connectGetMoscowNews():
 
 
 def createNoteInteraction():
-    """
-    Взаимодействие с пользователем для создания заметки.
+    """Взаимодействие с пользователем для создания заметки.
     Запрашивает у пользователя текст заметки и сохраняет её с помощью метода createNote класса NotesManager.
     Обрабатывает исключения.
     """
@@ -236,6 +216,7 @@ def deleteNoteInteraction():
     Показывает список заметок, запрашивает у пользователя номер заметки для удаления и удаляет её с помощью метода deleteNote класса NotesManager.
     Обрабатывает исключения, включая случаи отсутствия заметок и неверного номера.
     """
+
     try:
         NoteManagerClass.NotesManager().readNotes()  # Сначала показать список заметок
         if not NoteManagerClass.NotesManager().notes:  # проверка на наличие заметок
@@ -264,5 +245,6 @@ def deleteNoteInteraction():
         speak(f"Произошла ошибка: {e}")
 
 
+
 if __name__ == "__main__":
-    listenForWakeWord()  # Запуск основного процесса
+    listenForWakeWord()# Запуск основного процесса

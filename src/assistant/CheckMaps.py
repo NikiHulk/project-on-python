@@ -1,22 +1,18 @@
 from geopy.geocoders import Nominatim
 
 
+# Перемещаем getCoordinates сюда для мока
 def getCoordinates(address):
     """
-    Получает координаты (широту и долготу) по заданному адресу.
+        Получает координаты (широту и долготу) по заданному адресу.
+        Args:
+            address (str): Адрес для поиска координат.
+        Returns:
+            tuple: Кортеж (latitude, longitude) - широта и долгота.
+        Raises:
+            ValueError: Если не удалось найти координаты по заданному адресу.
+        """
 
-    Этот метод использует библиотеку geopy для получения координат (широты и долготы)
-    на основе введенного адреса с использованием сервиса Nominatim.
-
-    Аргументы:
-        address (str): Адрес для поиска координат.
-
-    Возвращает:
-        tuple: Кортеж из двух чисел (latitude, longitude) — широта и долгота.
-
-    Исключения:
-        ValueError: Если не удалось найти координаты по заданному адресу.
-    """
     geolocator = Nominatim(user_agent="myGeocoder")
     location = geolocator.geocode(address)
     if location:
@@ -26,44 +22,33 @@ def getCoordinates(address):
 
 
 def getRouteBetweenAddresses(startAddress, endAddress):
+    # Функция для получения маршрута с использованием OSRM
     """
-    Получает информацию о маршруте между двумя адресами с использованием OSRM.
-
-    Этот метод получает координаты начального и конечного адресов, затем делает запрос к
-    OSRM для получения информации о маршруте между ними, включая расстояние и время в пути.
-
-    Аргументы:
-        startAddress (str): Начальный адрес.
-        endAddress (str): Конечный адрес.
-
-    Возвращает:
-        dict: Словарь с информацией о маршруте:
-              - distance (float): Расстояние в километрах.
-              - duration (float): Время в пути в минутах.
-
-    Исключения:
-        ValueError: При возникновении ошибок при получении координат, запросе к OSRM или обработке ответа.
-        Exception: При любых других непредвиденных ошибках.
-    """
+        Получает информацию о маршруте между двумя адресами с использованием OSRM.
+        Args:
+            startAddress (str): Начальный адрес.
+            endAddress (str): Конечный адрес.
+        Returns:
+            dict: Словарь с информацией о маршруте:
+                  - distance (float): Расстояние в километрах.
+                  - duration (float): Время в пути в минутах.
+        Raises:
+            ValueError: При возникновении ошибок при получении координат, запросе к OSRM или обработке ответа.
+            Exception: При любых других непредвиденных ошибках.
+        """
 
     def getRouteOSRM(startCoords, endCoords):
+        import requests
         """
         Вспомогательная функция для получения данных о маршруте от OSRM.
-
-        Этот метод делает запрос к серверу OSRM для получения информации о маршруте между двумя точками
-        с заданными координатами и возвращает расстояние и время в пути.
-
-        Аргументы:
+        Args:
             startCoords (tuple): Координаты начальной точки (latitude, longitude).
             endCoords (tuple): Координаты конечной точки (latitude, longitude).
-
-        Возвращает:
+        Returns:
             dict: Словарь с информацией о маршруте (distance, duration).
-
-        Исключения:
+        Raises:
             ValueError: При ошибках в запросе к OSRM или обработке ответа.
         """
-        import requests
 
         osrmUrl = f"http://router.project-osrm.org/route/v1/driving/{startCoords[1]},{startCoords[0]};{endCoords[1]},{endCoords[0]}?overview=full&steps=true"
         response = requests.get(osrmUrl)

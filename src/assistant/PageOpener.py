@@ -1,45 +1,56 @@
 import webbrowser
 
-
-def open_page(url, page_name):
-    """Открывает веб-страницу по заданному URL и выводит сообщение.
-
-    Args:
-        url (str): URL страницы для открытия.
-        page_name (str): Читаемое имя страницы для вывода в сообщение.
-    """
-    webbrowser.open(url)
-    print(f"Открыта страница: {page_name} ({url})")
-
-
+# Открытие страницы ВКонтакте
 def openVkontakte():
-    open_page("https://vk.com", "ВКонтакте")
+    """Открывает веб-сайт ВКонтакте."""
+    url = "https://vk.com"
+    webbrowser.open(url)
+    print(f"Открыта страница: {url}")
 
-
+# Открытие страницы VkВидео
 def openVkVideo():
-    open_page("https://vk.com/video", "ВКонтакте Видео")
+    """Открывает страницу видео ВКонтакте."""
+    url = "https://vk.com/video"
+    webbrowser.open(url)
+    print(f"Открыта страница: {url}")
 
-
+# Открытие страницы Кинопоиск
 def openKinopoisk():
-    open_page("https://www.kinopoisk.ru", "Кинопоиск")
+    """Открывает веб-сайт Кинопоиск."""
+    url = "https://www.kinopoisk.ru"
+    webbrowser.open(url)
+    print(f"Открыта страница: {url}")
 
-
+# Открытие страницы ИВИ
 def openIvi():
-    open_page("https://www.ivi.ru", "ИВИ")
+    """Открывает веб-сайт ИВИ."""
+    url = "https://www.ivi.ru"
+    webbrowser.open(url)
+    print(f"Открыта страница: {url}")
 
-
+# Открытие страницы Rutube
 def openRutube():
-    open_page("https://rutube.ru", "Rutube")
+    """Открывает веб-сайт Rutube."""
+    url = "https://rutube.ru"
+    webbrowser.open(url)
+    print(f"Открыта страница: {url}")
 
-
+# Открытие страницы YouTube
 def openYouTube():
-    open_page("https://www.youtube.com", "YouTube")
+    """Открывает веб-сайт YouTube."""
+    url = "https://www.youtube.com"
+    webbrowser.open(url)
+    print(f"Открыта страница: {url}")
 
-
+# Открытие страницы Telegram
 def openTelegram():
-    open_page("https://web.telegram.org", "Telegram")
-
+    """Открывает веб-версию Telegram."""
+    url = "https://web.telegram.org"
+    webbrowser.open(url)
+    print(f"Открыта страница: {url}")
 
 def openYandexMaps():
-    open_page("https://yandex.ru/maps/", "Яндекс.Карты")
-
+    """Открывает Яндекс.Карты."""
+    url = "https://yandex.ru/maps/"
+    webbrowser.open(url)
+    print(f"Открыта страница: {url}")
