@@ -1,6 +1,6 @@
 from unittest.mock import patch
 import wikipedia
-from src.assistant.CheckWiki import searchInWikipedia  # Замените на правильный путь
+from src import searchInWikipedia  # Замените на правильный путь
 
 
 def test_searchInWikipedia():

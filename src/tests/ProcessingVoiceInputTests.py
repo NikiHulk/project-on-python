@@ -1,7 +1,6 @@
 import pytest
 from unittest.mock import patch
-from src.assistant.ProcessingVoiceInput import listenForWakeWord, executeCommand
-from src.assistant.NoteManagerClass import crea
+from src import listenForWakeWord, executeCommand
 
 # Общий мок для speak
 @pytest.fixture(scope="module")
@@ -67,8 +66,8 @@ def test_executeCommand_known_command(mock_speak):
 def test_create_note_interaction(mock_speak):
     with patch('builtins.input', return_value="Тестовая заметка"):
         with patch('assistant.NoteManagerClass.NotesManager.createNote') as mock_create_note:
-            from src.assistant.NoteManagerClass import CreateNote
-            CreateNote()
+            from src import createNoteInteraction
+            createNoteInteraction()
             mock_create_note.assert_called_with("Тестовая заметка")
             mock_speak.assert_called_with("Заметка создана.")
 

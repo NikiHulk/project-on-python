@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch
-from src.assistant.RebootManager import RebootManager
+from src import RebootManager
 
 
 class TestRebootManager(unittest.TestCase):
