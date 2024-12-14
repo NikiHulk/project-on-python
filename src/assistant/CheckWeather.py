@@ -3,8 +3,22 @@ from bs4 import BeautifulSoup
 
 from SpeechUtils import speak
 
-
 def checkWeatherNow(city):
+
+    """
+    Получает и озвучивает текущую погоду для указанного города.
+
+    Функция отправляет запрос на поисковую систему Google для получения информации о текущей погоде
+    в указанном городе и выводит эту информацию на экран, а также озвучивает ее с помощью системы синтеза речи.
+
+    Аргументы:
+        city (str): Название города, для которого необходимо узнать погоду.
+
+    Исключения:
+        requests.exceptions.RequestException: Если произошла ошибка при запросе к Google.
+        AttributeError: Если не удается извлечь данные о погоде из HTML-страницы.
+    """
+
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 YaBrowser/24.10.0.0 Safari/537.36"
     }

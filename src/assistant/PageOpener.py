@@ -1,5 +1,26 @@
 import webbrowser
 
+"""
+Этот модуль содержит функции для открытия популярных сайтов с использованием браузера.
+
+Функции:
+- openVkontakte(): Открывает страницу ВКонтакте (https://vk.com).
+- openVkVideo(): Открывает страницу видеоконтента ВКонтакте (https://vk.com/video).
+- openKinopoisk(): Открывает страницу Кинопоиска (https://www.kinopoisk.ru).
+- openIvi(): Открывает страницу ИВИ (https://www.ivi.ru).
+- openRutube(): Открывает страницу Rutube (https://rutube.ru).
+- openYouTube(): Открывает страницу YouTube (https://www.youtube.com).
+- openTelegram(): Открывает страницу Telegram Web (https://web.telegram.org).
+- openYandexMaps(): Открывает страницу Яндекс.Карт (https://yandex.ru/maps/).
+
+Зависимости:
+- webbrowser: Модуль для взаимодействия с веб-браузером и открытия URL.
+
+Примечания:
+- Каждая функция открывает соответствующую веб-страницу в браузере и выводит сообщение об этом.
+"""
+
+
 # Открытие страницы ВКонтакте
 def openVkontakte():
     url = "https://vk.com"
