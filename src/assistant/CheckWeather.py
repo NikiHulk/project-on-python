@@ -5,21 +5,6 @@ from SpeechUtils import speak
 
 
 def checkWeatherNow(city):
-    """
-    Получает и озвучивает текущую погоду для заданного города с использованием Google Weather.
-    Args:
-        city (str): Название города.
-    Returns:
-        None. Выводит информацию о погоде в консоль и озвучивает её с помощью SpeechUtils.speak().
-    Raises:
-            requests.exceptions.RequestException: При ошибках HTTP-запроса.
-            IndexError: Если на странице Google Weather отсутствуют ожидаемые элементы.
-            ValueError: При ошибках обработки данных.
-    Notes:
-            Функция использует веб-скрапинг страницы Google Weather.  Структура страницы может измениться, что может привести к ошибкам.
-            Необходимо установить библиотеки requests и beautifulsoup4: pip install requests beautifulsoup4
-    """
-
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 YaBrowser/24.10.0.0 Safari/537.36"
     }

@@ -3,16 +3,6 @@ from geopy.geocoders import Nominatim
 
 # Перемещаем getCoordinates сюда для мока
 def getCoordinates(address):
-    """
-        Получает координаты (широту и долготу) по заданному адресу.
-        Args:
-            address (str): Адрес для поиска координат.
-        Returns:
-            tuple: Кортеж (latitude, longitude) - широта и долгота.
-        Raises:
-            ValueError: Если не удалось найти координаты по заданному адресу.
-        """
-
     geolocator = Nominatim(user_agent="myGeocoder")
     location = geolocator.geocode(address)
     if location:
@@ -23,33 +13,8 @@ def getCoordinates(address):
 
 def getRouteBetweenAddresses(startAddress, endAddress):
     # Функция для получения маршрута с использованием OSRM
-    """
-        Получает информацию о маршруте между двумя адресами с использованием OSRM.
-        Args:
-            startAddress (str): Начальный адрес.
-            endAddress (str): Конечный адрес.
-        Returns:
-            dict: Словарь с информацией о маршруте:
-                  - distance (float): Расстояние в километрах.
-                  - duration (float): Время в пути в минутах.
-        Raises:
-            ValueError: При возникновении ошибок при получении координат, запросе к OSRM или обработке ответа.
-            Exception: При любых других непредвиденных ошибках.
-        """
-
     def getRouteOSRM(startCoords, endCoords):
         import requests
-        """
-        Вспомогательная функция для получения данных о маршруте от OSRM.
-        Args:
-            startCoords (tuple): Координаты начальной точки (latitude, longitude).
-            endCoords (tuple): Координаты конечной точки (latitude, longitude).
-        Returns:
-            dict: Словарь с информацией о маршруте (distance, duration).
-        Raises:
-            ValueError: При ошибках в запросе к OSRM или обработке ответа.
-        """
-
         osrmUrl = f"http://router.project-osrm.org/route/v1/driving/{startCoords[1]},{startCoords[0]};{endCoords[1]},{endCoords[0]}?overview=full&steps=true"
         response = requests.get(osrmUrl)
         if response.status_code == 200:

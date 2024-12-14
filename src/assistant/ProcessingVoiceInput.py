@@ -80,7 +80,6 @@ def searchInYandex(query):
 
 
 def executeCommand(commandPhrase: str):
-    """Выполняет команду, если она распознана, иначе выполняет поиск в Яндекс."""
     for key, func in commands.items():
         for keyword in key:
             if keyword in commandPhrase:
@@ -127,20 +126,10 @@ commands = {
 }
 
 def connectCheckWiki():
-    """
-    Запускает поиск в Википедии по запросу пользователя.
-    Запрашивает у пользователя поисковый запрос и передает его функции searchInWikipedia класса CheckWiki.
-    """
-
     query = str(input("Введите ваш запрос: "))
     CheckWiki.searchInWikipedia(query)
 
 def connectTossCoin():
-    """
-       Имитирует подбрасывание монеты указанное пользователем количество раз.
-       Запрашивает у пользователя количество подбрасываний и передает его в метод tossCoin класса TossCoin.
-    """
-
     toss = TossCoin()
     speak("Введите количество подбрасываний монеты")
     numTosses = int(input("Введите количество подбрасываний монеты: "))  # Запрашиваем количество подбрасываний
@@ -148,23 +137,12 @@ def connectTossCoin():
 
 
 def connectCheckMaps():
-    """
-    Получает маршрут между двумя адресами с помощью сервиса карт (предполагается CheckMaps).
-    Запрашивает у пользователя начальный и конечный адреса и передает их функции getRouteBetweenAddresses класса CheckMaps.
-    """
-
     startAddress = input("Введите адрес, откуда собираетесь добираться: ")
     endAddress = input("Введите адрес, куда собираетесь добираться: ")
     CheckMaps.getRouteBetweenAddresses(startAddress, endAddress)
 
 
 def connectReminder():
-    """
-    Создает напоминание на указанную дату и время.
-    Запрашивает у пользователя дату, время и текст напоминания, а затем устанавливает напоминание с помощью функции setReminder.
-    Функция работает в цикле, постоянно проверяя и выполняя запланированные напоминания.
-    """
-
     year = int(input("Введите год (YYYY): "))
     month = int(input("Введите месяц (MM): "))
     day = int(input("Введите день (DD): "))
@@ -180,9 +158,6 @@ def connectReminder():
 
 
 def connectGetMoscowNews():
-    """
-    Получает и выводит новости Москвы из RSS-ленты по указанному номеру.
-    Запрашивает у пользователя номер новости, формирует URL RSS-ленты и передает его функции GetMoscowNewsFromRss."""
     num = input(
         "Введите номер интересующей вас новости, например 1, 2 ... 25: ")  # каждому номеру соответствует определенный топик из новостей
     rssUrl = f"https://govoritmoskva.ru/rss/news/{num}"
@@ -195,10 +170,7 @@ def connectGetMoscowNews():
 
 
 def createNoteInteraction():
-    """Взаимодействие с пользователем для создания заметки.
-    Запрашивает у пользователя текст заметки и сохраняет её с помощью метода createNote класса NotesManager.
-    Обрабатывает исключения.
-    """
+    """Взаимодействие с пользователем для создания заметки."""
     try:
         speak("Введите текст заметки")
         noteText = input("Введите текст заметки: ")
@@ -211,12 +183,7 @@ def createNoteInteraction():
 
 
 def deleteNoteInteraction():
-    """
-    Взаимодействие с пользователем для удаления заметки.
-    Показывает список заметок, запрашивает у пользователя номер заметки для удаления и удаляет её с помощью метода deleteNote класса NotesManager.
-    Обрабатывает исключения, включая случаи отсутствия заметок и неверного номера.
-    """
-
+    """Взаимодействие с пользователем для удаления заметки."""
     try:
         NoteManagerClass.NotesManager().readNotes()  # Сначала показать список заметок
         if not NoteManagerClass.NotesManager().notes:  # проверка на наличие заметок
